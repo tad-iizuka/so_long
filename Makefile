@@ -6,7 +6,7 @@
 #    By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/09 18:03:39 by tiizuka           #+#    #+#              #
-#    Updated: 2024/10/28 17:33:29 by tiizuka          ###   ########.fr        #
+#    Updated: 2024/10/28 18:01:56 by tiizuka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 NAME		= so_long
 HEAD		= ./header
 LIBX		= ./minilibx-linux
+LIBX_PATH	= git@github.com:42Paris/minilibx-linux.git
 
 # Sources directory
 ifeq		"$(findstring bonus, $(MAKECMDGOALS))" "bonus"
@@ -43,6 +44,7 @@ RM			= rm -f
 # Rule for compiling source files
 $(ODIR)/%.o: $(SDIR)/%.c
 			@if [ ! -d "$(ODIR)" ]; then mkdir $(ODIR); fi
+			@if [ ! -d "$(LIBX)" ]; then git clone $(LIBX_PATH); fi
 			$(CC) $(CFLAGS) -c $< -o ${patsubst $(SDIR)/%.o, $(ODIR)/%.o, $@}
 
 $(LDIR)/%.o: $(LDIR)/%.c
