@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:36 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/10/28 17:33:37 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/10/29 21:53:25 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(void)
 	while (i < SCREEN_WIDHT)
 	{
 		j = 0;
-		while (j < SCREEN_WIDHT)
+		while (j < SCREEN_HEIGHT)
 		{
 			mlx_pixel_put(mlx, mlx_win, i, j, 127);
 			j++;

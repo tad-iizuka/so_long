@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/10/28 17:33:45 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/10/29 21:04:27 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@
 # include	"../libft/libft.h"
 
 # define SCREEN_WIDHT 640
-# define SCREEN_HEIGHT 640
+# define SCREEN_HEIGHT 320
 
 #endif
