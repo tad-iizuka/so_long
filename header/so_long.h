@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/10/29 21:04:27 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/10/30 15:42:25 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,10 @@
 
 # define SCREEN_WIDHT 640
 # define SCREEN_HEIGHT 320
+
+typedef struct	s_vars {
+	void	*mlx;
+	void	*mlx_win;
+}				t_vars;
 
 #endif
