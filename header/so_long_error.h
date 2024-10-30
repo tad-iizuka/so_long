@@ -6,11 +6,13 @@
 /*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 20:19:56 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/10/30 20:21:16 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/10/30 21:19:13 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_ERROR.H
-# define  SO_LONG_ERROR.H
+#ifndef SO_LONG_ERROR_H
+# define  SO_LONG_ERROR_H
+
+# define ERR_MLX_INIT 0
 
 #endif
