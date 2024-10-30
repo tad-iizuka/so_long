@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:36 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/10/30 15:42:59 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/10/30 15:47:33 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ int	main(void)
 	int		j;
 
 	vars.mlx = mlx_init();
-	vars.mlx_win = mlx_new_window(vars.mlx, SCREEN_WIDHT, SCREEN_HEIGHT, "test");
+	vars.mlx_win = mlx_new_window(vars.mlx, WIN_W, WIN_H, "test");
 	i = 0;
-	while (i < SCREEN_WIDHT)
+	while (i < WIN_W)
 	{
 		j = 0;
-		while (j < SCREEN_HEIGHT)
+		while (j < WIN_H)
 		{
 			mlx_pixel_put(vars.mlx, vars.mlx_win, i, j, 127);
 			j++;
