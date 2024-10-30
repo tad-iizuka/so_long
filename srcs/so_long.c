@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:36 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/10/30 21:07:39 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/10/31 06:00:12 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@ int	key_close(t_vars *vars)
 	return (0);
 }
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
 	t_vars	vars;
 	int		i;
 	int		j;
 
+	(void)argc;
+	(void)argv;
 	vars.mlx = mlx_init();
 	vars.mlx_win = mlx_new_window(vars.mlx, WIN_W, WIN_H, "test");
 	i = 0;
