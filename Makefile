@@ -6,7 +6,7 @@
 #    By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/09 18:03:39 by tiizuka           #+#    #+#              #
-#    Updated: 2024/10/28 18:01:56 by tiizuka          ###   ########.fr        #
+#    Updated: 2024/10/31 06:08:01 by tiizuka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ CFLAGS		= -Wall -Wextra -Werror -I ${HEAD}
 
 # Remove command
 RM			= rm -f
+RMRF		= rm -rf
 
 # Rule for compiling source files
 $(ODIR)/%.o: $(SDIR)/%.c
@@ -73,7 +74,8 @@ endif
 ifneq ("$(wildcard $(LIBX)/obj/*.o)", "")
 			$(MAKE) -C $(LIBX) clean
 endif
-			
+			@if [ -d "$(ODIR)" ]; then ${RMRF} $(ODIR); fi
+			@if [ -d "$(LIBX)" ]; then ${RMRF} $(LIBX); fi
 
 # Rule for full clean
 fclean:		clean
