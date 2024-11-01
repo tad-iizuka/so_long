@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/10/31 11:33:20 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/01 13:32:49 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include	"../libft/libft.h"
 # include	"so_long_error.h"
 
-# define WIN_W 640
-# define WIN_H 320
+# define WIN_W 1920
+# define WIN_H 1080
 
 typedef struct s_vars {
 	void	*mlx;
