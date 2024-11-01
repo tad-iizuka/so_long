@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/01 13:32:49 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/01 18:35:31 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include	<X11/Xlib.h>
 # include	<sys/ipc.h>
 # include	<sys/shm.h>
+# include	<sys/time.h>
+# include	<time.h>
 # include	<X11/extensions/XShm.h>
 # include	"../minilibx-linux/mlx.h"
 # include	"../libft/libft.h"
@@ -33,5 +35,6 @@ typedef struct s_vars {
 }	t_vars;
 
 void	print_error(char *str);
+void	ft_print_utime(char *id);
 
 #endif

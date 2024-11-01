@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:36 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/01 13:39:29 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/01 18:43:17 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,13 @@ void	test(t_vars *vars)
 	mlx_put_image_to_window(vars->mlx, vars->mlx_win, img.img, 0, 0);
 }
 
+int	render_next_frame(t_vars *vars)
+{
+	(void)vars;
+	ft_print_utime("next frame");
+	return (0);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_vars	vars;
@@ -87,6 +94,7 @@ int	main(int argc, char *argv[])
 	// }
 	mlx_key_hook(vars.mlx_win, key_hook, &vars);
 	mlx_hook(vars.mlx_win, 33, 1L << 17, key_close, &vars);
+	mlx_loop_hook(vars.mlx, render_next_frame, &vars);
 	mlx_loop(vars.mlx);
 	return (1);
 }
