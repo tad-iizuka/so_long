@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:36 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/10/31 06:00:12 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/10/31 11:40:46 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,17 @@ int	main(int argc, char *argv[])
 	(void)argc;
 	(void)argv;
 	vars.mlx = mlx_init();
-	vars.mlx_win = mlx_new_window(vars.mlx, WIN_W, WIN_H, "test");
+	if (!vars.mlx)
+	{
+		print_error("mlx_init");
+		return (1);
+	}
+	vars.mlx_win = mlx_new_window(vars.mlx, WIN_W, WIN_H, "so_long");
+	if (!vars.mlx)
+	{
+		print_error("mlx_win");
+		return (1);
+	}
 	i = 0;
 	while (i < WIN_W)
 	{

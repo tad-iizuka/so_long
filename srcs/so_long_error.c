@@ -3,13 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_error.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 20:18:34 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/10/30 21:05:15 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/10/31 11:31:51 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	print_error(void)
+#include	"so_long.h"
+
+void	print_error(char *str)
 {
+	if (str)
+		perror(str);
 }
