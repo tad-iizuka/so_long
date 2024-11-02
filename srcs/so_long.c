@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:36 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/02 14:03:27 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/02 14:50:47 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	key_hook(int keycode, t_vars *vars)
 {
 	(void)vars;
-	printf("[%d]\n", keycode);
+	printf("[%d]\n", (char)keycode);
 	return (1);
 }
 
