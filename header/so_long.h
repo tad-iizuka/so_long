@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/01 18:35:31 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/02 13:14:31 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,17 @@
 # include	"../libft/libft.h"
 # include	"so_long_error.h"
 
-# define WIN_W 1920
-# define WIN_H 1080
+# define WIN_W	1920
+# define WIN_H	1080
+# define FPS60	833
 
 typedef struct s_vars {
 	void	*mlx;
 	void	*mlx_win;
+	size_t	frame;
 }	t_vars;
 
 void	print_error(char *str);
 void	ft_print_utime(char *id);
-
+int		so_long_timer(t_vars *vars);
 #endif
