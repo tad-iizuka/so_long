@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+         #
+#    By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 20:16:08 by tiizuka           #+#    #+#              #
-#    Updated: 2024/10/09 13:36:02 by tiizuka          ###   ########.fr        #
+#    Updated: 2024/11/03 13:36:51 by tiizuka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,16 @@ BSRCS		= \
 			ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
 			ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c \
 
+GSRCS		= get_next_line/get_next_line.c
+
 OBJS		= ${SRCS:.c=.o}
 BOBJS		= ${BSRCS:.c=.o}
+GOBJS		= ${GSRCS:.c=.o}
+			OBJS += $(GOBJS)
+
+ifeq		"$(findstring bonus, $(MAKECMDGOALS))" "bonus"
+			OBJS += $(BOBJS)
+endif
 
 # Compiler setting
 CC			= cc
@@ -39,10 +47,6 @@ CFLAGS		= -Wall -Wextra -Werror
 # Archive and remove command
 AR			= ar rcs
 RM			= rm -f
-
-ifeq		"$(findstring bonus, $(MAKECMDGOALS))" "bonus"
-			OBJS += $(BOBJS)
-endif
 
 # Default target
 all:		${NAME}

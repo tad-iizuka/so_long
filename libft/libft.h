@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 18:00:41 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/03/31 17:41:37 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/03 13:27:33 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,7 @@ t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
+
+char	*get_next_line(int fd);
 
 #endif
