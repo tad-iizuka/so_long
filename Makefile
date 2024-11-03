@@ -6,7 +6,7 @@
 #    By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/09 18:03:39 by tiizuka           #+#    #+#              #
-#    Updated: 2024/11/03 13:55:47 by tiizuka          ###   ########.fr        #
+#    Updated: 2024/11/03 14:36:12 by tiizuka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,6 @@ ifneq ("$(wildcard $(ODIR)/*.o)", "")
 endif
 ifneq ("$(wildcard $(LDIR)/*.o)", "")
 			$(MAKE) -C $(LDIR) clean
-			${RM} $(wildcard $(LDIR)/*.a)
 endif
 ifneq ("$(wildcard $(LIBX)/obj/*.o)", "")
 			$(MAKE) -C $(LIBX) clean
