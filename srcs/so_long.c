@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:36 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/02 14:50:47 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/03 13:03:30 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,9 @@ int	main(int argc, char *argv[])
 		return (1);
 	}
 	// test(&vars);
+	if (argc > 1)
+		so_long_map(argv[1], &vars);
 	img = mlx_xpm_file_to_image(vars.mlx, relative_path, &img_width, &img_height);
-	printf("[%d][%d]\n", img_height, img_width);
 	mlx_put_image_to_window(vars.mlx, vars.mlx_win, img, 0, 0);
 	mlx_key_hook(vars.mlx_win, key_hook, &vars);
 	mlx_hook(vars.mlx_win, 33, 1L << 17, key_close, &vars);
