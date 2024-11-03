@@ -6,11 +6,11 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:22:09 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/03 07:52:13 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/03 08:13:45 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"so_long.h"
+#include	"../header/so_long.h"
 
 void	ft_print_utime(char *id)
 {
