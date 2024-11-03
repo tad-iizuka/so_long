@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 12:28:47 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/02 14:44:29 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/03 08:36:38 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	so_long_timer(t_vars *vars)
 {
 	vars->frame++;
-	// if ((vars->frame % FPS60) == 0)
-	// 	printf("[%zu]\n", vars->frame / FPS60 % 60);
+	if ((vars->frame % FPS60) == 0)
+		ft_printf("[%zu]\n", vars->frame / FPS60 % 60);
 	return (True);
 }

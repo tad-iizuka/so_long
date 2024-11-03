@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 11:55:45 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/03 14:58:10 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/03 08:35:53 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	so_long_map_check(char *path)
 
 int	so_long_map_read(int fd, t_vars *vars)
 {
-	int	r;
+	int		r;
 	char	*str;
 
 	r = True;
@@ -32,7 +32,7 @@ int	so_long_map_read(int fd, t_vars *vars)
 		if (str)
 			free(str);
 		else
-			break;
+			break ;
 	}
 	return (r);
 }
@@ -40,7 +40,7 @@ int	so_long_map_read(int fd, t_vars *vars)
 int	so_long_map_open(char *path, t_vars *vars)
 {
 	int		fd;
-	int		r;\
+	int		r;
 
 	r = True;
 	errno = 0;
