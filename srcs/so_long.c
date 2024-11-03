@@ -6,11 +6,11 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:36 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/03 13:03:30 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/03 08:28:49 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"so_long.h"
+#include	"../header/so_long.h"
 
 int	key_hook(int keycode, t_vars *vars)
 {
@@ -39,7 +39,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 void	test(t_vars *vars)
@@ -49,9 +49,10 @@ void	test(t_vars *vars)
 	int		j;
 
 	img.img = mlx_new_image(vars->mlx, WIN_W, WIN_H);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								&img.endian);
-
+	img.addr = mlx_get_data_addr(img.img, \
+		&img.bits_per_pixel, \
+		&img.line_length, \
+		&img.endian);
 	i = 0;
 	while (i < WIN_W)
 	{
@@ -73,12 +74,13 @@ int	main(int argc, char *argv[])
 {
 	t_vars	vars;
 	void	*img;
-	char	*relative_path = "./player.xpm";
+	char	*relative_path;
 	int		img_width;
 	int		img_height;
 
 	(void)argc;
 	(void)argv;
+	relative_path = "./player.xpm";
 	vars.frame = 0;
 	vars.mlx = mlx_init();
 	if (!vars.mlx)
@@ -92,10 +94,10 @@ int	main(int argc, char *argv[])
 		print_error("mlx_win");
 		return (1);
 	}
-	// test(&vars);
 	if (argc > 1)
 		so_long_map(argv[1], &vars);
-	img = mlx_xpm_file_to_image(vars.mlx, relative_path, &img_width, &img_height);
+	img = mlx_xpm_file_to_image(vars.mlx, \
+		relative_path, &img_width, &img_height);
 	mlx_put_image_to_window(vars.mlx, vars.mlx_win, img, 0, 0);
 	mlx_key_hook(vars.mlx_win, key_hook, &vars);
 	mlx_hook(vars.mlx_win, 33, 1L << 17, key_close, &vars);
