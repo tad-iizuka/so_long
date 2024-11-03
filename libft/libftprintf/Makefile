@@ -6,7 +6,7 @@
 #    By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 19:45:34 by tiizuka           #+#    #+#              #
-#    Updated: 2024/11/03 14:31:01 by tiizuka          ###   ########.fr        #
+#    Updated: 2024/11/03 14:45:10 by tiizuka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@
 NAME		= libftprintf.a
 
 # Name of srcs/includes
-SRCDIR = srcs
-INCDIR = includes
+SDIR 		= srcs
+HEAD 		= includes
 
-SRCS = $(wildcard $(SRCDIR)/*.c)
-OBJS = $(SRCS:$(SRCDIR)/%.c=$(SRCDIR)/%.o)
+SRCS 		= $(wildcard $(SDIR)/*.c)
+OBJS		= ${patsubst $(SDIR)/%.c, $(SDIR)/%.o, ${SRCS}}
 
 # Compiler setting
 CC			= cc
@@ -35,20 +35,22 @@ ${NAME}:	${OBJS}
 			${AR} ${NAME} ${OBJS}
 			mv *.a ../
 
-$(SRCDIR)/%.o: $(SRCDIR)/%.c
-	@if [ ! -d "$(SRCDIR)" ]; then mkdir $(SRCDIR); fi
-	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
+$(SDIR)/%.o: $(SDIR)/%.c
+	$(CC) $(CFLAGS) -I$(HEAD) -c $< -o $@
 
 # Rule for bonus
 bonus:		all
 
 # Rule for cleaning object files
 clean:
+ifneq ("$(wildcard $(OBJS)/*.o)", "")
 			${RM} ${OBJS}
-
+endif
 # Rule for full clean
 fclean:		clean
+ifneq ("$(wildcard ../$(NAME))", "")
 			${RM} ../${NAME}
+endif
 
 # Rule for re-build
 re:			fclean all
