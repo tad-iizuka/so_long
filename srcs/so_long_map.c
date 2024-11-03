@@ -6,35 +6,100 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 11:55:45 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/03 08:35:53 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/03 12:30:32 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"so_long.h"
+#include	"../header/so_long.h"
 
-int	so_long_map_check(char *path)
+char	*ft_strrpc(char *s, int c)
 {
-	(void)path;
-	return (False);
+	char	*p;
+
+	p = s;
+	while (*s)
+	{
+		if (*s == (char)c)
+			*s = '\0';
+		s++;
+	}
+	return (p);
+}
+
+t_map	*create_map(char *str, t_vars *vars)
+{
+	int		i;
+	t_map	*map;
+	t_map	**m;
+	t_map	**p;
+
+	map = (t_map *)malloc(sizeof(t_map));
+	if (!map)
+		return (NULL);
+	map->map = ft_strrpc(str, '\n');
+	map->x = ft_strlen(str);
+	map->num_0 = 0;
+	map->num_1 = 0;
+	map->num_C = 0;
+	map->num_E = 0;
+	map->num_P = 0;
+	i = 0;
+	while (map->x > i)
+	{
+		if (str[i] == '0')
+			map->num_0++;
+		else if (str[i] == '1')
+			map->num_1++;
+		else if (str[i] == 'C')
+			map->num_C++;
+		else if (str[i] == 'E')
+			map->num_E++;
+		else if (str[i] == 'P')
+			map->num_P++;
+		i++;
+	}
+	p = vars->map;
+	m = (t_map **)malloc(sizeof(t_map *) * (vars->num_map + 1));
+	vars->map = m;
+	i = 0;
+	while (vars->num_map > i)
+	{
+		vars->map[i] = p[i];
+		i++;
+	}
+	vars->map[i] = map;
+	vars->num_map++;
+	if (p)
+		free(p);
+	return (map);
 }
 
 int	so_long_map_read(int fd, t_vars *vars)
 {
-	int		r;
 	char	*str;
+	int		i;
 
-	r = True;
-	(void)vars;
 	while (1)
 	{
 		str = get_next_line(fd);
-		ft_printf("%s", str);
 		if (str)
-			free(str);
+			create_map(str, vars);
 		else
 			break ;
 	}
-	return (r);
+	i = 0;
+	while (vars->num_map > i)
+	{
+		ft_printf("map [%s]\n", vars->map[i]->map);
+		ft_printf("x [%d]\n", vars->map[i]->x);
+		ft_printf("0 [%d]\n", vars->map[i]->num_0);
+		ft_printf("1 [%d]\n", vars->map[i]->num_1);
+		ft_printf("C [%d]\n", vars->map[i]->num_C);
+		ft_printf("E [%d]\n", vars->map[i]->num_E);
+		ft_printf("P [%d]\n\n", vars->map[i]->num_P);
+		i++;
+	}
+	return (vars->map != NULL);
 }
 
 int	so_long_map_open(char *path, t_vars *vars)
@@ -57,9 +122,5 @@ int	so_long_map_open(char *path, t_vars *vars)
 
 int	so_long_map(char *path, t_vars *vars)
 {
-	int	r;
-
-	(void)vars;
-	r = so_long_map_open(path, vars);
-	return (r);
+	return (so_long_map_open(path, vars));
 }

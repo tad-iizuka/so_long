@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:36 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/03 08:28:49 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/03 12:08:19 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,20 @@ int	key_hook(int keycode, t_vars *vars)
 
 int	key_close(t_vars *vars)
 {
+	int	i;
+
 	mlx_destroy_window(vars->mlx, vars->mlx_win);
+	mlx_destroy_display(vars->mlx);
+	i = 0;
+	while (vars->num_map > i)
+	{
+		free(vars->map[i]->map);
+		free(vars->map[i++]);
+	}
+	if (vars->map)
+		free(vars->map);
+	if (vars->mlx)
+		free(vars->mlx);
 	exit(0);
 	return (0);
 }
@@ -73,15 +86,17 @@ void	test(t_vars *vars)
 int	main(int argc, char *argv[])
 {
 	t_vars	vars;
-	void	*img;
-	char	*relative_path;
-	int		img_width;
-	int		img_height;
+	// void	*img;
+	// char	*relative_path;
+	// int		img_width;
+	// int		img_height;
 
 	(void)argc;
 	(void)argv;
-	relative_path = "./player.xpm";
+	// relative_path = "./player.xpm";
 	vars.frame = 0;
+	vars.num_map = 0;
+	vars.map = NULL;
 	vars.mlx = mlx_init();
 	if (!vars.mlx)
 	{
@@ -96,10 +111,10 @@ int	main(int argc, char *argv[])
 	}
 	if (argc > 1)
 		so_long_map(argv[1], &vars);
-	img = mlx_xpm_file_to_image(vars.mlx, \
-		relative_path, &img_width, &img_height);
-	mlx_put_image_to_window(vars.mlx, vars.mlx_win, img, 0, 0);
-	mlx_key_hook(vars.mlx_win, key_hook, &vars);
+	// img = mlx_xpm_file_to_image(vars.mlx, 
+	// 	relative_path, &img_width, &img_height);
+	// mlx_put_image_to_window(vars.mlx, vars.mlx_win, img, 0, 0);
+	// mlx_key_hook(vars.mlx_win, key_hook, &vars);
 	mlx_hook(vars.mlx_win, 33, 1L << 17, key_close, &vars);
 	mlx_loop_hook(vars.mlx, so_long_timer, &vars);
 	mlx_loop(vars.mlx);

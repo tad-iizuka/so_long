@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/03 12:08:08 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/03 11:52:50 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,27 @@
 # include	"../libft/libft.h"
 # include	"so_long_error.h"
 
-# define WIN_W	1920
-# define WIN_H	1080
+# define WIN_W	1920 / 2
+# define WIN_H	1080 / 2
 # define FPS60	833
+
+typedef struct s_map
+{
+	char	*map;
+	int		x;
+	int		num_0;
+	int		num_1;
+	int		num_C;
+	int		num_E;
+	int		num_P;
+}	t_map;
 
 typedef struct s_vars {
 	void	*mlx;
 	void	*mlx_win;
 	size_t	frame;
+	t_map	**map;
+	int		num_map;
 }	t_vars;
 
 void	print_error(char *str);
