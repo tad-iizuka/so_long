@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+         #
+#    By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/09 18:03:39 by tiizuka           #+#    #+#              #
-#    Updated: 2024/10/31 06:08:01 by tiizuka          ###   ########.fr        #
+#    Updated: 2024/11/03 13:55:47 by tiizuka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ endif
 
 # Rule for full clean
 fclean:		clean
+			$(MAKE) -C $(LDIR) fclean
 ifneq ("$(wildcard $(NAME))", "")
 			${RM} $(NAME)
 endif

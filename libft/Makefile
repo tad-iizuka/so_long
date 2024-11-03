@@ -6,12 +6,14 @@
 #    By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 20:16:08 by tiizuka           #+#    #+#              #
-#    Updated: 2024/11/03 13:36:51 by tiizuka          ###   ########.fr        #
+#    Updated: 2024/11/03 13:55:26 by tiizuka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Name of target
 NAME		= libft.a
+
+LPRINTF		= ./libftprintf
 
 # Name of srcs
 SRCS		= \
@@ -52,6 +54,7 @@ RM			= rm -f
 all:		${NAME}
 
 ${NAME}:	${OBJS}
+			$(MAKE) -C ${LPRINTF}
 			${AR} ${NAME} ${OBJS}
 
 # Rule for bonus
@@ -59,11 +62,13 @@ bonus:		all
 
 # Rule for cleaning object files
 clean:
+			$(MAKE) -C ${LPRINTF} clean
 			${RM} ${OBJS} ${BOBJS}
 
 # Rule for full clean
 fclean:		clean
 			${RM} ${NAME}
+			$(MAKE) -C ${LPRINTF} fclean
 
 # Rule for re-build
 re:			fclean all

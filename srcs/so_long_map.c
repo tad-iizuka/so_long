@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 11:55:45 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/03 13:29:32 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/03 13:56:35 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	so_long_map_read(char *path)
 	while (1)
 	{
 		str = get_next_line(fd);
-		printf("%s", str);
+		ft_printf("%s", str);
 		if (str)
 			free(str);
 		else
