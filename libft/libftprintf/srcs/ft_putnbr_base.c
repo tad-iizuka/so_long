@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:15:15 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/05/05 17:00:16 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/03 07:57:25 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"ft_printf.h"
+#include	"../includes/ft_printf.h"
 
 void	ft_putnbr_base(unsigned long long nbr, char *base, t_pr *pr)
 {
 	unsigned long long	base_type;
 
 	base_type = ft_strlen(base);
-	if (nbr < 0)
-	{
-		ft_putchar_fd('-', STDOUT_FILENO);
-		nbr *= -1;
-		pr->n++;
-	}
+	// if (nbr < 0)
+	// {
+	// 	ft_putchar_fd('-', STDOUT_FILENO);
+	// 	nbr *= -1;
+	// 	pr->n++;
+	// }
 	if (nbr >= base_type)
 	{
 		ft_putnbr_base(nbr / base_type, base, pr);
