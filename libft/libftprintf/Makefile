@@ -6,7 +6,7 @@
 #    By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 19:45:34 by tiizuka           #+#    #+#              #
-#    Updated: 2024/11/03 13:59:44 by tiizuka          ###   ########.fr        #
+#    Updated: 2024/11/03 14:31:01 by tiizuka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ clean:
 
 # Rule for full clean
 fclean:		clean
-			${RM} ${NAME}
+			${RM} ../${NAME}
 
 # Rule for re-build
 re:			fclean all
