@@ -6,24 +6,28 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 11:55:45 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/03 12:30:32 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/04 14:12:15 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../header/so_long.h"
 
-char	*ft_strrpc(char *s, int c)
+void	map_read_debug(t_vars *vars)
 {
-	char	*p;
+	int	i;
 
-	p = s;
-	while (*s)
+	i = 0;
+	while (vars->num_map > i)
 	{
-		if (*s == (char)c)
-			*s = '\0';
-		s++;
+		ft_printf("map [%s]\n", vars->map[i]->map);
+		ft_printf("x [%d]\n", vars->map[i]->x);
+		ft_printf("0 [%d]\n", vars->map[i]->num_0);
+		ft_printf("1 [%d]\n", vars->map[i]->num_1);
+		ft_printf("C [%d]\n", vars->map[i]->num_C);
+		ft_printf("E [%d]\n", vars->map[i]->num_E);
+		ft_printf("P [%d]\n\n", vars->map[i]->num_P);
+		i++;
 	}
-	return (p);
 }
 
 t_map	*create_map(char *str, t_vars *vars)
@@ -33,31 +37,9 @@ t_map	*create_map(char *str, t_vars *vars)
 	t_map	**m;
 	t_map	**p;
 
-	map = (t_map *)malloc(sizeof(t_map));
+	map = map_new(str);
 	if (!map)
 		return (NULL);
-	map->map = ft_strrpc(str, '\n');
-	map->x = ft_strlen(str);
-	map->num_0 = 0;
-	map->num_1 = 0;
-	map->num_C = 0;
-	map->num_E = 0;
-	map->num_P = 0;
-	i = 0;
-	while (map->x > i)
-	{
-		if (str[i] == '0')
-			map->num_0++;
-		else if (str[i] == '1')
-			map->num_1++;
-		else if (str[i] == 'C')
-			map->num_C++;
-		else if (str[i] == 'E')
-			map->num_E++;
-		else if (str[i] == 'P')
-			map->num_P++;
-		i++;
-	}
 	p = vars->map;
 	m = (t_map **)malloc(sizeof(t_map *) * (vars->num_map + 1));
 	vars->map = m;
@@ -82,27 +64,22 @@ int	so_long_map_read(int fd, t_vars *vars)
 	while (1)
 	{
 		str = get_next_line(fd);
-		if (str)
-			create_map(str, vars);
-		else
+		if (!str)
 			break ;
-	}
-	i = 0;
-	while (vars->num_map > i)
-	{
-		ft_printf("map [%s]\n", vars->map[i]->map);
-		ft_printf("x [%d]\n", vars->map[i]->x);
-		ft_printf("0 [%d]\n", vars->map[i]->num_0);
-		ft_printf("1 [%d]\n", vars->map[i]->num_1);
-		ft_printf("C [%d]\n", vars->map[i]->num_C);
-		ft_printf("E [%d]\n", vars->map[i]->num_E);
-		ft_printf("P [%d]\n\n", vars->map[i]->num_P);
-		i++;
+		i = 0;
+		while (str[i])
+		{
+			if (str[i] == '\n')
+				str[i] = '\0';
+			i++;
+		}
+		if (!create_map(str, vars))
+			return (False);
 	}
 	return (vars->map != NULL);
 }
 
-int	so_long_map_open(char *path, t_vars *vars)
+int	so_long_map(char *path, t_vars *vars)
 {
 	int		fd;
 	int		r;
@@ -117,10 +94,14 @@ int	so_long_map_open(char *path, t_vars *vars)
 	}
 	r = so_long_map_read(fd, vars);
 	close(fd);
+	r &= map_check_main(vars);
+	if (!r)
+		map_free(vars);
+	else
+	{
+		map_find_pos(vars);
+		map_to_mtx(vars);
+	}
+	ft_printf("[%d][%d]\n", vars->x, vars->y);
 	return (r);
-}
-
-int	so_long_map(char *path, t_vars *vars)
-{
-	return (so_long_map_open(path, vars));
 }

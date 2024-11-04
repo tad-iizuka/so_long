@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:36 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/03 12:08:19 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/04 12:50:02 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,9 @@ int	key_hook(int keycode, t_vars *vars)
 
 int	key_close(t_vars *vars)
 {
-	int	i;
-
 	mlx_destroy_window(vars->mlx, vars->mlx_win);
 	mlx_destroy_display(vars->mlx);
-	i = 0;
-	while (vars->num_map > i)
-	{
-		free(vars->map[i]->map);
-		free(vars->map[i++]);
-	}
-	if (vars->map)
-		free(vars->map);
+	map_free(vars);
 	if (vars->mlx)
 		free(vars->mlx);
 	exit(0);
@@ -97,6 +88,17 @@ int	main(int argc, char *argv[])
 	vars.frame = 0;
 	vars.num_map = 0;
 	vars.map = NULL;
+	if (argc < 2)
+	{
+		ft_putstr_fd("Error\n", STDOUT_FILENO);
+		return (1);
+	}
+
+	if (!so_long_map(argv[1], &vars))
+	{
+		ft_putstr_fd("Error\n", STDOUT_FILENO);
+		return (1);
+	}
 	vars.mlx = mlx_init();
 	if (!vars.mlx)
 	{
@@ -109,8 +111,6 @@ int	main(int argc, char *argv[])
 		print_error("mlx_win");
 		return (1);
 	}
-	if (argc > 1)
-		so_long_map(argv[1], &vars);
 	// img = mlx_xpm_file_to_image(vars.mlx, 
 	// 	relative_path, &img_width, &img_height);
 	// mlx_put_image_to_window(vars.mlx, vars.mlx_win, img, 0, 0);
