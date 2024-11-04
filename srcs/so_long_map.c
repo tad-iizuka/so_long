@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 11:55:45 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/04 14:12:15 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/04 07:38:19 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,5 @@ int	so_long_map(char *path, t_vars *vars)
 	r &= map_check_main(vars);
 	if (!r)
 		map_free(vars);
-	else
-	{
-		map_find_pos(vars);
-		map_to_mtx(vars);
-	}
-	ft_printf("[%d][%d]\n", vars->x, vars->y);
 	return (r);
 }

@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/04 14:08:43 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/04 07:08:45 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_vars {
 	void	*mlx_win;
 	int		x;
 	int		y;
+	int		w;
+	int		size_map;
 	int		num_map;
 	t_map	**map;
 	char	*mtx;
@@ -63,6 +65,7 @@ t_map	*map_new(char *str);
 int		map_to_mtx(t_vars *vars);
 void	map_free(t_vars *vars);
 int		map_check_main(t_vars *vars);
+int		map_check_route(t_vars *vars);
 void	map_find_pos(t_vars *vars);
 
 #endif

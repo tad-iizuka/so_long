@@ -6,17 +6,11 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:07:47 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/04 14:10:10 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/04 07:38:07 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../header/so_long.h"
-
-int	map_check_route(t_vars *vars)
-{
-	(void)vars;
-	return (True);
-}
 
 int	map_check_wall(t_vars *vars)
 {
@@ -55,6 +49,8 @@ int	map_check_square(t_vars *vars)
 		return (False);
 	if ((w % vars->num_map) != 0)
 		return (False);
+	vars->size_map = w;
+	vars->w = vars->map[0]->x;
 	return (True);
 }
 
@@ -89,5 +85,11 @@ int	map_check_main(t_vars *vars)
 	r &= map_check_wall(vars);
 	r &= map_check_square(vars);
 	r &= map_check_items(vars);
+	if (r)
+	{
+		map_find_pos(vars);
+		map_to_mtx(vars);
+		r &= map_check_route(vars);
+	}
 	return (r);
 }
