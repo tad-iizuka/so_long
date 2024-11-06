@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:36 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/04 07:15:13 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/06 12:26:06 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,9 @@ void	test(t_vars *vars)
 int	main(int argc, char *argv[])
 {
 	t_vars	vars;
-	// void	*img;
-	// char	*relative_path;
-	// int		img_width;
-	// int		img_height;
+	int		x;
+	int		y;
 
-	(void)argc;
-	(void)argv;
-	// relative_path = "./player.xpm";
 	vars.frame = 0;
 	vars.num_map = 0;
 	vars.map = NULL;
@@ -94,7 +89,6 @@ int	main(int argc, char *argv[])
 		ft_putstr_fd("Error\n", STDOUT_FILENO);
 		return (1);
 	}
-
 	if (!so_long_map(argv[1], &vars))
 	{
 		ft_putstr_fd("Error\n", STDOUT_FILENO);
@@ -106,16 +100,15 @@ int	main(int argc, char *argv[])
 		print_error("mlx_init");
 		return (1);
 	}
-	vars.mlx_win = mlx_new_window(vars.mlx, WIN_W, WIN_H, "so_long");
+	x = vars.w * PIXEL_W;
+	y = vars.num_map * PIXEL_H;
+	vars.mlx_win = mlx_new_window(vars.mlx, x, y, "so_long");
 	if (!vars.mlx)
 	{
 		print_error("mlx_win");
 		return (1);
 	}
-	// img = mlx_xpm_file_to_image(vars.mlx, 
-	// 	relative_path, &img_width, &img_height);
-	// mlx_put_image_to_window(vars.mlx, vars.mlx_win, img, 0, 0);
-	// mlx_key_hook(vars.mlx_win, key_hook, &vars);
+	so_long_layer_init(&vars);
 	mlx_hook(vars.mlx_win, 33, 1L << 17, key_close, &vars);
 	mlx_loop_hook(vars.mlx, so_long_timer, &vars);
 	mlx_loop(vars.mlx);

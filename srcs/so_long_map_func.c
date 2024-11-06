@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:48:10 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/04 14:13:04 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/06 12:12:30 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	map_free(t_vars *vars)
 		free(vars->map);
 	if (vars->mtx)
 		free(vars->mtx);
+	if (vars->texture)
+		free(vars->texture);
 	vars->map = NULL;
 	vars->num_map = 0;
 	vars->mtx = NULL;

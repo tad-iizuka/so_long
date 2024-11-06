@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/04 07:08:45 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/06 12:12:42 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,14 @@
 # include	<time.h>
 // # include	<X11/extensions/XShm.h>
 # include	"../minilibx-linux/mlx.h"
+# include	"../minilibx-linux/mlx_int.h"
 # include	"../libft/libft.h"
 # include	"so_long_error.h"
 
 # define WIN_W	1920 / 2
 # define WIN_H	1080 / 2
+# define PIXEL_W	128
+# define PIXEL_H	128
 # define FPS60	833
 
 typedef struct s_map
@@ -43,23 +46,46 @@ typedef struct s_map
 	int		num_P;
 }	t_map;
 
+enum e_texture
+{
+	TYPE_0 = '0',
+	TYPE_1 = '1',
+	TYPE_C = 'C',
+	TYPE_E = 'E',
+	TYPE_P = 'P'
+};
+
+typedef struct s_texture
+{
+	int		update;
+	int		type;
+	int		animation;
+	int		frame;
+	int		max_frame;
+	int		repeat;
+}	t_texture;
+
 typedef struct s_vars {
-	void	*mlx;
-	void	*mlx_win;
-	int		x;
-	int		y;
-	int		w;
-	int		size_map;
-	int		num_map;
-	t_map	**map;
-	char	*mtx;
-	size_t	frame;
+	void		*mlx;
+	void		*mlx_win;
+	int			x;
+	int			y;
+	int			w;
+	int			size_map;
+	int			num_map;
+	t_map		**map;
+	char		*mtx;
+	t_texture	*texture;
+	t_img		*type[5];
+	size_t		frame;
 }	t_vars;
 
 void	print_error(char *str);
 void	ft_print_utime(char *id);
 int		so_long_timer(t_vars *vars);
 int		so_long_map(char *path, t_vars *vars);
+void	so_long_layer_init(t_vars *vars);
+void	so_long_layer_update(t_vars *vars);
 
 t_map	*map_new(char *str);
 int		map_to_mtx(t_vars *vars);
