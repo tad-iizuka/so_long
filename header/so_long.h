@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/06 12:12:42 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/09 13:32:10 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define WIN_H	1080 / 2
 # define PIXEL_W	128
 # define PIXEL_H	128
-# define FPS60	833
+# define FPS	500
 
 typedef struct s_map
 {

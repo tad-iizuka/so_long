@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 06:43:23 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/04 08:43:46 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/09 14:52:06 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	map_check_route_sub(int x, int y, char *mtx, t_vars *vars)
 		if (map_check_route_sub((x - 1), y, mtx, vars))
 			return (True);
 	}
-	if ((x + 1) < vars->w - 1)
+	if ((x + 1) <= vars->w - 1)
 	{
 		if (map_check_route_sub((x + 1), y, mtx, vars))
 			return (True);
@@ -61,6 +61,7 @@ int	map_check_route(t_vars *vars)
 {
 	int		r;
 	char	*mtx;
+	// int		i;
 
 	r = False;
 	mtx = (char *)malloc(sizeof(char) * vars->size_map);
@@ -68,6 +69,14 @@ int	map_check_route(t_vars *vars)
 		return (False);
 	ft_memcpy(mtx, vars->mtx, vars->size_map);
 	r = map_check_route_sub(vars->x, vars->y, mtx, vars);
+	// i = 0;
+	// while (vars->size_map > i)
+	// {
+	// 	printf("%c", mtx[i]);
+	// 	if ((i % vars->w) == 12)
+	// 		printf("\n");
+	// 	i++;
+	// }
 	free(mtx);
 	return (r);
 }

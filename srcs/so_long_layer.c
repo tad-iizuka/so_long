@@ -6,13 +6,13 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/06 12:34:55 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/09 14:02:16 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include    "../header/so_long.h"
 
-void	bg(t_vars *vars)
+static void	type(t_vars *vars, char type)
 {
 	int		i;
 	t_img	*img;
@@ -23,17 +23,18 @@ void	bg(t_vars *vars)
 	i = 0;
 	while (vars->size_map > i)
 	{
-		if (vars->texture[i].update)
+		if (vars->texture[i].update && vars->texture[i].type == type)
 		{
 			vars->texture[i].update = False;
-			path = "./xpm/0/0.xpm";
-			if (vars->texture[i].type == TYPE_1)
+			if (type == TYPE_0)
+				path = "./xpm/0/0.xpm";
+			if (type == TYPE_1)
 				path = "./xpm/1/0.xpm";
-			if (vars->texture[i].type == TYPE_C)
+			if (type == TYPE_C)
 				path = "./xpm/C/0.xpm";
-			if (vars->texture[i].type == TYPE_E)
+			if (type == TYPE_E)
 				path = "./xpm/E/0.xpm";
-			if (vars->texture[i].type == TYPE_P)
+			if (type == TYPE_P)
 				path = "./xpm/P/0.xpm";
 			img = mlx_xpm_file_to_image(vars->mlx, \
 				path, &img_width, &img_height);
@@ -50,7 +51,11 @@ void	bg(t_vars *vars)
 
 void	so_long_layer_update(t_vars *vars)
 {
-	bg(vars);
+	type(vars, '1');
+	type(vars, '0');
+	type(vars, 'C');
+	type(vars, 'E');
+	type(vars, 'P');
 }
 
 void	so_long_layer_init(t_vars *vars)
