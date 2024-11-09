@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:07:47 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/04 07:38:07 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/09 12:48:51 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,27 @@ int	map_check_items(t_vars *vars)
 	return (True);
 }
 
+int	map_check_format(t_vars *vars)
+{
+	int	i;
+	int s;
+
+	i = 0;
+	while (vars->num_map > i)
+	{
+		s = 0;
+		s += vars->map[i]->num_0;
+		s += vars->map[i]->num_1;
+		s += vars->map[i]->num_E;
+		s += vars->map[i]->num_P;
+		s += vars->map[i]->num_C;
+		if (s != vars->w)
+			return (False);
+		i++;
+	}
+	return (True);
+}
+
 int	map_check_main(t_vars *vars)
 {
 	int	r;
@@ -85,6 +106,7 @@ int	map_check_main(t_vars *vars)
 	r &= map_check_wall(vars);
 	r &= map_check_square(vars);
 	r &= map_check_items(vars);
+	r &= map_check_format(vars);
 	if (r)
 	{
 		map_find_pos(vars);
