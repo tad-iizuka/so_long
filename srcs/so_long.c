@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:36 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/06 12:26:06 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/09 12:18:02 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int	main(int argc, char *argv[])
 	vars.num_map = 0;
 	vars.map = NULL;
 	vars.mtx = NULL;
+	vars.texture = NULL;
 	if (argc < 2)
 	{
 		ft_putstr_fd("Error\n", STDOUT_FILENO);
