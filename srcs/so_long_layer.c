@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/10 14:48:09 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/10 10:58:10 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ static void	type(t_vars *vars, char type)
 void	so_long_layer_update(t_vars *vars)
 {
 	type(vars, '1');
-	type(vars, '0');
+	// type(vars, '0');
 	type(vars, 'C');
 	type(vars, 'E');
-	type(vars, 'P');
+	// type(vars, 'P');
 }
 
 void	so_long_layer_init(t_vars *vars)

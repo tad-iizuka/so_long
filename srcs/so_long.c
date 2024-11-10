@@ -6,18 +6,11 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:36 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/09 12:18:02 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/10 10:41:49 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../header/so_long.h"
-
-int	key_hook(int keycode, t_vars *vars)
-{
-	(void)vars;
-	printf("[%d]\n", (char)keycode);
-	return (1);
-}
 
 int	key_close(t_vars *vars)
 {
@@ -111,6 +104,7 @@ int	main(int argc, char *argv[])
 	}
 	so_long_layer_init(&vars);
 	mlx_hook(vars.mlx_win, 33, 1L << 17, key_close, &vars);
+	mlx_key_hook(vars.mlx_win, so_long_key_hook, &vars);
 	mlx_loop_hook(vars.mlx, so_long_timer, &vars);
 	mlx_loop(vars.mlx);
 	return (1);
