@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/10 10:58:14 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/11 12:24:49 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@
 # define PIXEL_H	128
 # define FPS	500
 
-# define KEY_A 0x41
-# define KEY_D 0x44
-# define KEY_W 0x57
-# define KEY_S 0x53
+# define KEY_W 0x77
+# define KEY_D 0x64
+# define KEY_A 0x61
+# define KEY_S 0x73
 # define KEY_ESC 0x1b
 
 typedef struct s_map
@@ -88,6 +88,11 @@ typedef struct s_vars {
 
 void	print_error(char *str);
 void	ft_print_utime(char *id);
+int		key_close(t_vars *vars);
+int		key_up(t_vars *vars);
+int		key_down(t_vars *vars);
+int		key_left(t_vars *vars);
+int		key_right(t_vars *vars);
 int		so_long_timer(t_vars *vars);
 int		so_long_map(char *path, t_vars *vars);
 void	so_long_layer_init(t_vars *vars);

@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_key_hook.c                                 :+:      :+:    :+:   */
+/*   so_long_key_direction.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 10:38:21 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/11 12:22:29 by tiizuka          ###   ########.fr       */
+/*   Created: 2024/11/11 12:16:22 by tiizuka           #+#    #+#             */
+/*   Updated: 2024/11/11 12:29:48 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include    "../header/so_long.h"
 
-int so_long_key_hook(int keycode, t_vars *vars)
+int key_up(t_vars *vars)
 {
     (void)vars;
-	if ((char)keycode == KEY_ESC)
-	{
-		key_close(vars);
-		return (0);
-	}
-	else if ((char)keycode == KEY_W)
-		key_up(vars);
-	else if ((char)keycode == KEY_S)
-		key_down(vars);
-	else if ((char)keycode == KEY_A)
-		key_left(vars);
-	else if ((char)keycode == KEY_D)
-		key_right(vars);
-	else
-		printf("Hello from key_hook! [%02x]\n", (unsigned char)keycode);
-	return (0);
+    ft_printf("[%d][%d]->[%d]\n", vars->y, vars->x, vars->texture[(vars->y*vars->w) + vars->x].type);
+    return (0);
+}
+
+int key_down(t_vars *vars)
+{
+    (void)vars;
+    return (0);
+}
+
+int key_left(t_vars *vars)
+{
+    (void)vars;
+    return (0);
+}
+
+int key_right(t_vars *vars)
+{
+    (void)vars;
+    return (0);
 }
