@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/11 12:24:49 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/12 10:43:30 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ typedef struct s_vars {
 	int			w;
 	int			size_map;
 	int			num_map;
+	int			num_c;
+	int			complete;
 	t_map		**map;
 	char		*mtx;
 	t_texture	*texture;

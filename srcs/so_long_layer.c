@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/11 12:12:06 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/12 11:03:09 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*get_path(char type)
 		path = "./xpm/E/0.xpm";
 	else if (type == TYPE_P)
 		path = "./xpm/P/0.xpm";
-	return	(path);
+	return (path);
 }
 
 static void	type(t_vars *vars, char type)
@@ -61,7 +61,7 @@ static void	type(t_vars *vars, char type)
 void	so_long_layer_update(t_vars *vars)
 {
 	type(vars, '1');
-	// type(vars, '0');
+	type(vars, '0');
 	type(vars, 'C');
 	type(vars, 'E');
 	type(vars, 'P');

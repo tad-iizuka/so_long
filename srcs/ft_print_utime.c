@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:22:09 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/03 08:13:45 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/12 11:09:46 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_print_utime(char *id)
 {
-	// (void)id;
 	struct timeval	mytime;
 	struct tm		*time_st;
 	const char		week[7][4] = {

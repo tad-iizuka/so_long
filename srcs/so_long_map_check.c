@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:07:47 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/09 12:48:51 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/12 11:04:04 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,14 @@ int	map_check_items(t_vars *vars)
 	}
 	if (e != 1 || p != 1 || c == 0)
 		return (False);
+	vars->num_c = c;
 	return (True);
 }
 
 int	map_check_format(t_vars *vars)
 {
 	int	i;
-	int s;
+	int	s;
 
 	i = 0;
 	while (vars->num_map > i)
