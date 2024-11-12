@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:48:10 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/06 12:12:30 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/12 12:25:55 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	map_to_mtx(t_vars *vars)
 void	map_free(t_vars *vars)
 {
 	int	i;
+	t_img *img;
 
 	i = 0;
 	while (vars->num_map > i)
@@ -52,6 +53,41 @@ void	map_free(t_vars *vars)
 		free(vars->mtx);
 	if (vars->texture)
 		free(vars->texture);
+	if (vars->img0[0])
+	{
+		img = vars->img0[0];
+		free(img->image);
+		free(img);
+	}
+
+	while (i < 10)
+	{
+		if (vars->img1[i])
+		{
+			img = vars->img1[i];
+			free(img->image);
+			free(img);
+		}
+		if (vars->imgC[i])
+		{
+			img = vars->imgC[i];
+			free(img->image);
+			free(img);
+		}
+		if (vars->imgP[i])
+		{
+			img = vars->imgP[i];
+			free(img->image);
+			free(img);
+		}
+		if (vars->imgE[i])
+		{
+			img = vars->imgE[i];
+			free(img->image);
+			free(img);
+		}
+		i++;
+	}
 	vars->map = NULL;
 	vars->num_map = 0;
 	vars->mtx = NULL;

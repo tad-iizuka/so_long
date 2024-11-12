@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/12 10:43:30 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/12 12:15:33 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define WIN_H	1080 / 2
 # define PIXEL_W	128
 # define PIXEL_H	128
-# define FPS	500
+# define FPS	4000
 
 # define KEY_W 0x77
 # define KEY_D 0x64
@@ -81,6 +81,11 @@ typedef struct s_vars {
 	int			num_map;
 	int			num_c;
 	int			complete;
+	void		*img0[10];
+	void		*img1[10];
+	void		*imgC[10];
+	void		*imgE[10];
+	void		*imgP[10];
 	t_map		**map;
 	char		*mtx;
 	t_texture	*texture;
