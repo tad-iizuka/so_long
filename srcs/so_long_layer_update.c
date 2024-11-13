@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/13 13:26:59 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/13 14:24:18 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ static void	type(t_vars *vars, char type)
 
 void	so_long_layer_update(t_vars *vars)
 {
+	ft_print_utime("so_long_layer_update\n");
 	type(vars, '1');
 	type(vars, '0');
 	type(vars, 'C');

@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/12 12:15:33 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/13 14:27:30 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@
 # define WIN_H	1080 / 2
 # define PIXEL_W	128
 # define PIXEL_H	128
-# define FPS	4000
+# define FPS	6000
+// # define FPS	4000
 
 # define KEY_W 0x77
 # define KEY_D 0x64

@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 10:38:21 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/12 11:04:49 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/13 14:31:15 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ int	key_close(t_vars *vars)
 
 int	so_long_key_hook(int keycode, t_vars *vars)
 {
+	int	r;
+
+	r = False;
 	if ((char)keycode == KEY_ESC)
 	{
 		key_close(vars);
@@ -33,14 +36,14 @@ int	so_long_key_hook(int keycode, t_vars *vars)
 	if (vars->complete)
 		return (1);
 	if ((char)keycode == KEY_W)
-		key_up(vars);
+		r = key_up(vars);
 	else if ((char)keycode == KEY_S)
-		key_down(vars);
+		r = key_down(vars);
 	else if ((char)keycode == KEY_A)
-		key_left(vars);
+		r = key_left(vars);
 	else if ((char)keycode == KEY_D)
-		key_right(vars);
-	else
-		printf("Hello from key_hook! [%02x]\n", (unsigned char)keycode);
+		r = key_right(vars);
+	if (r)
+		so_long_layer_update(vars);
 	return (0);
 }
