@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/13 12:39:36 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/13 19:22:26 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,10 @@ static int	create_image(t_vars *vars, void **img, char *path)
 		ft_strlcpy(&str[0], "0.xpm", sizeof(str));
 		str[0] += i;
 		p = ft_strjoin(path, str);
-		ft_printf("%s\n", p);
 		if (p)
 		{
 			img[i] = mlx_xpm_file_to_image(vars->mlx, \
 				p, &w, &h);
-			ft_printf("%p\n", img[i]);
 			free(p);
 		}
 		else
