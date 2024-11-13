@@ -6,11 +6,34 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 06:43:23 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/10 13:42:05 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/13 13:17:24 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include    "../header/so_long.h"
+
+void	map_find_pos(t_vars *vars)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (vars->num_map > y)
+	{
+		x = 0;
+		while (vars->map[y]->x > x)
+		{
+			if (vars->map[y]->map[x] == 'P')
+			{
+				vars->x = x;
+				vars->y = y;
+				return ;
+			}
+			x++;
+		}
+		y++;
+	}
+}
 
 int	map_check_route_sub_find(int x, int y, char *mtx, t_vars *vars)
 {

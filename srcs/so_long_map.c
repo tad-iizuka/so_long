@@ -6,29 +6,11 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 11:55:45 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/04 07:38:19 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/13 13:15:25 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../header/so_long.h"
-
-void	map_read_debug(t_vars *vars)
-{
-	int	i;
-
-	i = 0;
-	while (vars->num_map > i)
-	{
-		ft_printf("map [%s]\n", vars->map[i]->map);
-		ft_printf("x [%d]\n", vars->map[i]->x);
-		ft_printf("0 [%d]\n", vars->map[i]->num_0);
-		ft_printf("1 [%d]\n", vars->map[i]->num_1);
-		ft_printf("C [%d]\n", vars->map[i]->num_C);
-		ft_printf("E [%d]\n", vars->map[i]->num_E);
-		ft_printf("P [%d]\n\n", vars->map[i]->num_P);
-		i++;
-	}
-}
 
 t_map	*create_map(char *str, t_vars *vars)
 {

@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:16:22 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/12 11:09:22 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/13 12:37:26 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	key_up(t_vars *vars)
 		vars->texture[((vars->y - 1) * vars->w) + vars->x].type = 'P';
 		vars->texture[((vars->y - 1) * vars->w) + vars->x].update = True;
 		vars->texture[((vars->y) * vars->w) + vars->x].type = '0';
+		vars->texture[((vars->y) * vars->w) + vars->x].frame = 0;
 		vars->texture[((vars->y) * vars->w) + vars->x].update = True;
 		vars->y--;
 		if (type == 'C')
@@ -43,6 +44,7 @@ int	key_down(t_vars *vars)
 		vars->texture[((vars->y + 1) * vars->w) + vars->x].type = 'P';
 		vars->texture[((vars->y + 1) * vars->w) + vars->x].update = True;
 		vars->texture[((vars->y) * vars->w) + vars->x].type = '0';
+		vars->texture[((vars->y) * vars->w) + vars->x].frame = 0;
 		vars->texture[((vars->y) * vars->w) + vars->x].update = True;
 		vars->y++;
 		if (type == 'C')
@@ -64,6 +66,7 @@ int	key_left(t_vars *vars)
 		vars->texture[(vars->y * vars->w) + (vars->x - 1)].type = 'P';
 		vars->texture[(vars->y * vars->w) + (vars->x - 1)].update = True;
 		vars->texture[(vars->y * vars->w) + vars->x].type = '0';
+		vars->texture[((vars->y) * vars->w) + vars->x].frame = 0;
 		vars->texture[(vars->y * vars->w) + vars->x].update = True;
 		vars->x--;
 		if (type == 'C')
@@ -85,6 +88,7 @@ int	key_right(t_vars *vars)
 		vars->texture[(vars->y * vars->w) + (vars->x + 1)].type = 'P';
 		vars->texture[(vars->y * vars->w) + (vars->x + 1)].update = True;
 		vars->texture[(vars->y * vars->w) + vars->x].type = '0';
+		vars->texture[((vars->y) * vars->w) + vars->x].frame = 0;
 		vars->texture[(vars->y * vars->w) + vars->x].update = True;
 		vars->x++;
 		if (type == 'C')
