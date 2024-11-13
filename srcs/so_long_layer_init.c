@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/13 13:27:07 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/13 12:39:36 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,17 @@ static int	create_image(t_vars *vars, void **img, char *path)
 	int		h;
 
 	i = 0;
-	while (i < 10)
+	while (i < FRAME_MAX)
 	{
 		ft_strlcpy(&str[0], "0.xpm", sizeof(str));
 		str[0] += i;
 		p = ft_strjoin(path, str);
+		ft_printf("%s\n", p);
 		if (p)
 		{
 			img[i] = mlx_xpm_file_to_image(vars->mlx, \
 				p, &w, &h);
+			ft_printf("%p\n", img[i]);
 			free(p);
 		}
 		else
@@ -54,7 +56,10 @@ static void	create_images(t_vars *vars)
 	create_image(vars, vars->img1, "./xpm/1/");
 	create_image(vars, vars->imgC, "./xpm/C/");
 	create_image(vars, vars->imgE, "./xpm/E/");
-	create_image(vars, vars->imgP, "./xpm/P/");
+	create_image(vars, vars->imgPW, "./xpm/P/W/");
+	create_image(vars, vars->imgPS, "./xpm/P/S/");
+	create_image(vars, vars->imgPA, "./xpm/P/A/");
+	create_image(vars, vars->imgPD, "./xpm/P/D/");
 }
 
 void	so_long_layer_init(t_vars *vars)
@@ -73,7 +78,8 @@ void	so_long_layer_init(t_vars *vars)
 		vars->texture[i].update = False;
 		vars->texture[i].animation = True;
 		vars->texture[i].frame = 0;
-		vars->texture[i].max_frame = 10;
+		vars->texture[i].max_frame = FRAME_MAX;
+		vars->texture[i].direction = DIR_S;
 		vars->texture[i].repeat = True;
 		i++;
 	}

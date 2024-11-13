@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/13 14:27:30 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/13 12:46:09 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,22 @@
 
 # define WIN_W	1920 / 2
 # define WIN_H	1080 / 2
-# define PIXEL_W	128
-# define PIXEL_H	128
-# define FPS	6000
-// # define FPS	4000
+# define PIXEL_W	64
+# define PIXEL_H	64
+// # define FPS	6000
+# define FPS	4000
 
 # define KEY_W 0x77
 # define KEY_D 0x64
 # define KEY_A 0x61
 # define KEY_S 0x73
 # define KEY_ESC 0x1b
+
+# define DIR_W 0
+# define DIR_S 1
+# define DIR_A 2
+# define DIR_D 3
+# define FRAME_MAX 8
 
 typedef struct s_map
 {
@@ -69,6 +75,7 @@ typedef struct s_texture
 	int		animation;
 	int		frame;
 	int		max_frame;
+	int		direction;	// 0:w, 1:s, 2:a, 3:d
 	int		repeat;
 }	t_texture;
 
@@ -86,7 +93,11 @@ typedef struct s_vars {
 	void		*img1[10];
 	void		*imgC[10];
 	void		*imgE[10];
-	void		*imgP[10];
+	// void		*imgP[10];
+	void		*imgPW[8];
+	void		*imgPS[8];
+	void		*imgPA[8];
+	void		*imgPD[8];
 	t_map		**map;
 	char		*mtx;
 	t_texture	*texture;

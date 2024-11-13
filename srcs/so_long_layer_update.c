@@ -6,11 +6,27 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/13 14:24:18 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/13 12:31:24 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include    "../header/so_long.h"
+
+static void	*get_image_p(t_vars *vars, int i)
+{
+	void	*img;
+
+	img = NULL;
+	if (vars->texture[i].direction == DIR_W)
+		img = vars->imgPW[vars->texture[i].frame];
+	else if (vars->texture[i].direction == DIR_S)
+		img = vars->imgPS[vars->texture[i].frame];
+	else if (vars->texture[i].direction == DIR_A)
+		img = vars->imgPA[vars->texture[i].frame];
+	else if (vars->texture[i].direction == DIR_D)
+		img = vars->imgPD[vars->texture[i].frame];
+	return (img);
+}
 
 static void	*get_image(t_vars *vars, char type, int i)
 {
@@ -26,7 +42,7 @@ static void	*get_image(t_vars *vars, char type, int i)
 	else if (type == TYPE_E)
 		img = vars->imgE[vars->texture[i].frame];
 	else if (type == TYPE_P)
-		img = vars->imgP[vars->texture[i].frame];
+		img = get_image_p(vars, i);
 	return (img);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:48:10 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/13 13:38:01 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/13 11:34:42 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	image_free_sub(void **p)
 
 	i = 0;
 	i = 0;
-	while (i < 10)
+	while (i < FRAME_MAX)
 	{
 		if (p[i])
 		{
@@ -44,7 +44,10 @@ void	image_free(t_vars *vars)
 	image_free_sub(vars->img1);
 	image_free_sub(vars->imgC);
 	image_free_sub(vars->imgE);
-	image_free_sub(vars->imgP);
+	image_free_sub(vars->imgPW);
+	image_free_sub(vars->imgPS);
+	image_free_sub(vars->imgPA);
+	image_free_sub(vars->imgPD);
 }
 
 void	map_free(t_vars *vars)

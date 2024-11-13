@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:16:22 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/13 12:37:26 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/13 11:38:16 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	key_up(t_vars *vars)
 	{
 		vars->texture[((vars->y - 1) * vars->w) + vars->x].type = 'P';
 		vars->texture[((vars->y - 1) * vars->w) + vars->x].update = True;
+		vars->texture[((vars->y - 1) * vars->w) + vars->x].direction = DIR_W;
 		vars->texture[((vars->y) * vars->w) + vars->x].type = '0';
 		vars->texture[((vars->y) * vars->w) + vars->x].frame = 0;
 		vars->texture[((vars->y) * vars->w) + vars->x].update = True;
@@ -30,6 +31,11 @@ int	key_up(t_vars *vars)
 		if (type == 'E')
 			vars->complete = True;
 		return (True);
+	}
+	else
+	{
+		vars->texture[(vars->y * vars->w) + vars->x].direction = DIR_W;
+		vars->texture[(vars->y * vars->w) + vars->x].update = True;
 	}
 	return (False);
 }
@@ -43,6 +49,7 @@ int	key_down(t_vars *vars)
 	{
 		vars->texture[((vars->y + 1) * vars->w) + vars->x].type = 'P';
 		vars->texture[((vars->y + 1) * vars->w) + vars->x].update = True;
+		vars->texture[((vars->y + 1) * vars->w) + vars->x].direction = DIR_S;
 		vars->texture[((vars->y) * vars->w) + vars->x].type = '0';
 		vars->texture[((vars->y) * vars->w) + vars->x].frame = 0;
 		vars->texture[((vars->y) * vars->w) + vars->x].update = True;
@@ -52,6 +59,11 @@ int	key_down(t_vars *vars)
 		if (type == 'E')
 			vars->complete = True;
 		return (True);
+	}
+	else
+	{
+		vars->texture[(vars->y * vars->w) + vars->x].direction = DIR_S;
+		vars->texture[(vars->y * vars->w) + vars->x].update = True;
 	}
 	return (False);
 }
@@ -65,6 +77,7 @@ int	key_left(t_vars *vars)
 	{
 		vars->texture[(vars->y * vars->w) + (vars->x - 1)].type = 'P';
 		vars->texture[(vars->y * vars->w) + (vars->x - 1)].update = True;
+		vars->texture[(vars->y * vars->w) + (vars->x - 1)].direction = DIR_A;
 		vars->texture[(vars->y * vars->w) + vars->x].type = '0';
 		vars->texture[((vars->y) * vars->w) + vars->x].frame = 0;
 		vars->texture[(vars->y * vars->w) + vars->x].update = True;
@@ -74,6 +87,11 @@ int	key_left(t_vars *vars)
 		if (type == 'E')
 			vars->complete = True;
 		return (True);
+	}
+	else
+	{
+		vars->texture[(vars->y * vars->w) + vars->x].direction = DIR_A;
+		vars->texture[(vars->y * vars->w) + vars->x].update = True;
 	}
 	return (False);
 }
@@ -87,6 +105,7 @@ int	key_right(t_vars *vars)
 	{
 		vars->texture[(vars->y * vars->w) + (vars->x + 1)].type = 'P';
 		vars->texture[(vars->y * vars->w) + (vars->x + 1)].update = True;
+		vars->texture[(vars->y * vars->w) + (vars->x + 1)].direction = DIR_D;
 		vars->texture[(vars->y * vars->w) + vars->x].type = '0';
 		vars->texture[((vars->y) * vars->w) + vars->x].frame = 0;
 		vars->texture[(vars->y * vars->w) + vars->x].update = True;
@@ -96,6 +115,11 @@ int	key_right(t_vars *vars)
 		if (type == 'E')
 			vars->complete = True;
 		return (True);
+	}
+	else
+	{
+		vars->texture[(vars->y * vars->w) + vars->x].direction = DIR_D;
+		vars->texture[(vars->y * vars->w) + vars->x].update = True;
 	}
 	return (False);
 }
