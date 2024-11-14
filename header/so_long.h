@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/14 16:14:42 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/14 11:46:32 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@
 # include	"../minilibx-linux/mlx_int.h"
 # include	"../libft/libft.h"
 # include	"so_long_error.h"
+
+# ifndef BONUS
+#  define BONUS 0
+# endif
 
 # define WIN_W	1920 / 2
 # define WIN_H	1080 / 2

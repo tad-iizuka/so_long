@@ -6,22 +6,26 @@
 #    By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/09 18:03:39 by tiizuka           #+#    #+#              #
-#    Updated: 2024/11/14 11:19:59 by tiizuka          ###   ########.fr        #
+#    Updated: 2024/11/14 11:44:47 by tiizuka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Name of target
 NAME		= so_long
+
+ifeq		"$(findstring bonus, $(MAKECMDGOALS))" "bonus"
+BFLAGS		= -D BONUS=1
+else
+BFLAGS		= -D BONUS=0
+endif
+
+# Others
 HEAD		= ./header
 LIBX		= ./minilibx-linux
 LIBX_PATH	= git@github.com:42Paris/minilibx-linux.git
 
 # Sources directory
-ifeq		"$(findstring bonus, $(MAKECMDGOALS))" "bonus"
-SDIR		= bonus
-else
 SDIR		= srcs
-endif
 
 # Libraly and Object diectory
 LDIR 		= ./libft
@@ -29,10 +33,7 @@ ODIR 		= objs
 
 # Source, object files
 SRCS 		= $(wildcard $(SDIR)/*.c)
-LIBSRCS 	= $(wildcard $(LDIR)/*.c)
-
 OBJS		= ${patsubst $(SDIR)/%.c, $(ODIR)/%.o, ${SRCS}}
-LOBJS		= ${patsubst $(LDIR)/%.c, $(LDIR)/%.o, ${LIBSRCS}}
 
 # Compiler setting
 CC			= cc
@@ -50,7 +51,7 @@ $(ODIR):
 
 $(ODIR)/%.o: $(SDIR)/%.c | $(ODIR)
 			@if [ ! -d "$(LIBX)" ]; then git clone $(LIBX_PATH); fi
-			$(CC) $(CFLAGS) -c $< -o ${patsubst $(SDIR)/%.o, $(ODIR)/%.o, $@}
+			$(CC) $(BFLAGS) $(CFLAGS) -c $< -o ${patsubst $(SDIR)/%.o, $(ODIR)/%.o, $@}
 
 $(LDIR)/$(LIBFT):
 			make -C $(LDIR) bonus
