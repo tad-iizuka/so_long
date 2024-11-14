@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/14 15:59:33 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/14 16:14:42 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,11 @@ typedef struct s_vars {
 	size_t		frame;
 }	t_vars;
 
-void	print_error(char *str);
+int		ft_random(int range);
 void	ft_print_utime(char *id);
+
+void	print_error(char *str);
+
 int		key_close(t_vars *vars);
 int		key_up(t_vars *vars);
 int		key_down(t_vars *vars);
