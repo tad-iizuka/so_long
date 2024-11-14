@@ -6,7 +6,7 @@
 #    By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/09 18:03:39 by tiizuka           #+#    #+#              #
-#    Updated: 2024/11/03 14:52:14 by tiizuka          ###   ########.fr        #
+#    Updated: 2024/11/14 11:19:59 by tiizuka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,17 +42,18 @@ CFLAGS		= -Wall -Wextra -Werror -I ${HEAD}
 RM			= rm -f
 RMRF		= rm -rf
 
-# Rule for compiling source files
-$(ODIR)/%.o: $(SDIR)/%.c
-			@if [ ! -d "$(ODIR)" ]; then mkdir $(ODIR); fi
+# Default target
+all:		${NAME}
+
+$(ODIR):
+			mkdir $(ODIR)
+
+$(ODIR)/%.o: $(SDIR)/%.c | $(ODIR)
 			@if [ ! -d "$(LIBX)" ]; then git clone $(LIBX_PATH); fi
 			$(CC) $(CFLAGS) -c $< -o ${patsubst $(SDIR)/%.o, $(ODIR)/%.o, $@}
 
-$(LDIR)/%.o: $(LDIR)/%.c
-			$(CC) $(CFLAGS) -c $< -o ${patsubst $(LDIR)/%.o, $(LDIR)/%.o, $@}
-
-# Default target
-all:		${NAME}
+$(LDIR)/$(LIBFT):
+			make -C $(LDIR) bonus
 
 $(NAME) : $(OBJS) $(LOBJS)
 			$(MAKE) -C $(LDIR)
@@ -67,7 +68,9 @@ clean:
 ifneq ("$(wildcard $(ODIR)/*.o)", "")
 			${RM} $(wildcard $(ODIR)/*.o)
 endif
+ifneq ("$(wildcard $(LDIR)/obj/*.o)", "")
 			$(MAKE) -C $(LDIR) clean
+endif
 ifneq ("$(wildcard $(LIBX)/obj/*.o)", "")
 			$(MAKE) -C $(LIBX) clean
 endif
@@ -76,7 +79,9 @@ endif
 
 # Rule for full clean
 fclean:		clean
+ifneq ("$(wildcard $(LDIR)/*.a)", "")
 			$(MAKE) -C $(LDIR) fclean
+endif
 ifneq ("$(wildcard $(NAME))", "")
 			${RM} $(NAME)
 endif
