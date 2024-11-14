@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:36 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/12 11:03:36 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/14 15:50:59 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	so_long_init(t_vars *vars)
 	vars->map = NULL;
 	vars->mtx = NULL;
 	vars->texture = NULL;
+	vars->step = 0;
 }
 
 void	so_long_window_init(t_vars *vars)

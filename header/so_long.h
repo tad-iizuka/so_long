@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/14 14:45:54 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/14 15:59:33 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include	<sys/stat.h>
 # include	<fcntl.h>
 # include	<time.h>
-// # include	<X11/extensions/XShm.h>
 # include	"../minilibx-linux/mlx.h"
 # include	"../minilibx-linux/mlx_int.h"
 # include	"../libft/libft.h"
@@ -90,6 +89,7 @@ typedef struct s_vars {
 	int			size_map;
 	int			num_map;
 	int			num_c;
+	int			step;
 	int			complete;
 	void		*img0[1];
 	void		*img1[1];

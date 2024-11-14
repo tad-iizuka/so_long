@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 10:38:21 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/13 14:31:15 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/14 15:56:53 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ int	so_long_key_hook(int keycode, t_vars *vars)
 	else if ((char)keycode == KEY_D)
 		r = key_right(vars);
 	if (r)
+	{
 		so_long_layer_update(vars);
+		ft_printf("STEP: \x1b[32m[%04d]\x1b[0m\n", ++vars->step);
+	}
 	return (0);
 }
