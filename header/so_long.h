@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/13 19:21:48 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/14 14:45:54 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@
 # define WIN_H	1080 / 2
 # define PIXEL_W	64
 # define PIXEL_H	64
-// # define FPS	6000
-# define FPS	3000
+# define FPS	6000 
+// # define FPS	3000
 
 # define KEY_W 0x77
 # define KEY_D 0x64
@@ -46,7 +46,9 @@
 # define DIR_S 1
 # define DIR_A 2
 # define DIR_D 3
-# define FRAME_MAX 8
+# define FRAME_MAX_C 7
+# define FRAME_MAX_P 8
+# define FRAME_MAX 1
 
 typedef struct s_map
 {
@@ -89,11 +91,10 @@ typedef struct s_vars {
 	int			num_map;
 	int			num_c;
 	int			complete;
-	void		*img0[10];
-	void		*img1[10];
+	void		*img0[1];
+	void		*img1[1];
 	void		*imgC[10];
 	void		*imgE[10];
-	// void		*imgP[10];
 	void		*imgPW[8];
 	void		*imgPS[8];
 	void		*imgPA[8];
@@ -124,5 +125,11 @@ void	map_free(t_vars *vars);
 int		map_check_main(t_vars *vars);
 int		map_check_route(t_vars *vars);
 void	map_find_pos(t_vars *vars);
+
+int		get_frame_max(char type);
+int		is_animation(char type);
+
+void	set_p(t_texture *txt, int direction);
+void	set_0(t_texture *txt);
 
 #endif

@@ -6,20 +6,20 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:48:10 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/13 11:34:42 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/14 14:22:38 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../header/so_long.h"
 
-void	image_free_sub(void **p)
+void	image_free_sub(void **p, char type)
 {
 	int		i;
 	t_img	*img;
 
 	i = 0;
 	i = 0;
-	while (i < FRAME_MAX)
+	while (i < get_frame_max(type))
 	{
 		if (p[i])
 		{
@@ -41,13 +41,23 @@ void	image_free(t_vars *vars)
 		free(img->image);
 		free(img);
 	}
-	image_free_sub(vars->img1);
-	image_free_sub(vars->imgC);
-	image_free_sub(vars->imgE);
-	image_free_sub(vars->imgPW);
-	image_free_sub(vars->imgPS);
-	image_free_sub(vars->imgPA);
-	image_free_sub(vars->imgPD);
+	if (vars->img1[0])
+	{
+		img = vars->img1[0];
+		free(img->image);
+		free(img);
+	}
+	if (vars->imgE[0])
+	{
+		img = vars->imgE[0];
+		free(img->image);
+		free(img);
+	}
+	image_free_sub(vars->imgC, TYPE_C);
+	image_free_sub(vars->imgPW, TYPE_P);
+	image_free_sub(vars->imgPS, TYPE_P);
+	image_free_sub(vars->imgPA, TYPE_P);
+	image_free_sub(vars->imgPD, TYPE_P);
 }
 
 void	map_free(t_vars *vars)

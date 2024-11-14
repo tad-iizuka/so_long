@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 11:55:45 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/13 13:15:25 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/14 14:57:33 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ int	so_long_map(char *path, t_vars *vars)
 	int		r;
 
 	r = True;
+	if (ft_strnstr(path, ".ber", ft_strlen(path)) == NULL)
+		return (False);
 	errno = 0;
 	fd = open(path, O_RDONLY);
 	if (errno)

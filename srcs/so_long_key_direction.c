@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:16:22 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/13 11:38:16 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/14 14:50:04 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,8 @@ int	key_up(t_vars *vars)
 	type = vars->texture[((vars->y - 1) * vars->w) + vars->x].type;
 	if (type == '0' || type == 'C' || (type == 'E' && vars->num_c == 0))
 	{
-		vars->texture[((vars->y - 1) * vars->w) + vars->x].type = 'P';
-		vars->texture[((vars->y - 1) * vars->w) + vars->x].update = True;
-		vars->texture[((vars->y - 1) * vars->w) + vars->x].direction = DIR_W;
-		vars->texture[((vars->y) * vars->w) + vars->x].type = '0';
-		vars->texture[((vars->y) * vars->w) + vars->x].frame = 0;
-		vars->texture[((vars->y) * vars->w) + vars->x].update = True;
+		set_p(&vars->texture[((vars->y - 1) * vars->w) + vars->x], DIR_W);
+		set_0(&vars->texture[((vars->y) * vars->w) + vars->x]);
 		vars->y--;
 		if (type == 'C')
 			vars->num_c--;
@@ -47,12 +43,8 @@ int	key_down(t_vars *vars)
 	type = vars->texture[((vars->y + 1) * vars->w) + vars->x].type;
 	if (type == '0' || type == 'C' || (type == 'E' && vars->num_c == 0))
 	{
-		vars->texture[((vars->y + 1) * vars->w) + vars->x].type = 'P';
-		vars->texture[((vars->y + 1) * vars->w) + vars->x].update = True;
-		vars->texture[((vars->y + 1) * vars->w) + vars->x].direction = DIR_S;
-		vars->texture[((vars->y) * vars->w) + vars->x].type = '0';
-		vars->texture[((vars->y) * vars->w) + vars->x].frame = 0;
-		vars->texture[((vars->y) * vars->w) + vars->x].update = True;
+		set_p(&vars->texture[((vars->y + 1) * vars->w) + vars->x], DIR_S);
+		set_0(&vars->texture[((vars->y) * vars->w) + vars->x]);
 		vars->y++;
 		if (type == 'C')
 			vars->num_c--;
@@ -75,12 +67,8 @@ int	key_left(t_vars *vars)
 	type = vars->texture[(vars->y * vars->w) + (vars->x - 1)].type;
 	if (type == '0' || type == 'C' || (type == 'E' && vars->num_c == 0))
 	{
-		vars->texture[(vars->y * vars->w) + (vars->x - 1)].type = 'P';
-		vars->texture[(vars->y * vars->w) + (vars->x - 1)].update = True;
-		vars->texture[(vars->y * vars->w) + (vars->x - 1)].direction = DIR_A;
-		vars->texture[(vars->y * vars->w) + vars->x].type = '0';
-		vars->texture[((vars->y) * vars->w) + vars->x].frame = 0;
-		vars->texture[(vars->y * vars->w) + vars->x].update = True;
+		set_p(&vars->texture[(vars->y * vars->w) + (vars->x - 1)], DIR_A);
+		set_0(&vars->texture[(vars->y * vars->w) + vars->x]);
 		vars->x--;
 		if (type == 'C')
 			vars->num_c--;
@@ -103,12 +91,8 @@ int	key_right(t_vars *vars)
 	type = vars->texture[(vars->y * vars->w) + (vars->x + 1)].type;
 	if (type == '0' || type == 'C' || (type == 'E' && vars->num_c == 0))
 	{
-		vars->texture[(vars->y * vars->w) + (vars->x + 1)].type = 'P';
-		vars->texture[(vars->y * vars->w) + (vars->x + 1)].update = True;
-		vars->texture[(vars->y * vars->w) + (vars->x + 1)].direction = DIR_D;
-		vars->texture[(vars->y * vars->w) + vars->x].type = '0';
-		vars->texture[((vars->y) * vars->w) + vars->x].frame = 0;
-		vars->texture[(vars->y * vars->w) + vars->x].update = True;
+		set_p(&vars->texture[(vars->y * vars->w) + (vars->x + 1)], DIR_D);
+		set_0(&vars->texture[(vars->y * vars->w) + vars->x]);
 		vars->x++;
 		if (type == 'C')
 			vars->num_c--;
