@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:36 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/14 15:50:59 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/14 09:19:05 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	so_long_init(t_vars *vars)
 	vars->step = 0;
 }
 
-void	so_long_window_init(t_vars *vars)
+void	so_long_window_init(t_vars *vars, char *argv[])
 {
 	int		x;
 	int		y;
@@ -36,7 +36,7 @@ void	so_long_window_init(t_vars *vars)
 	}
 	x = vars->w * PIXEL_W;
 	y = vars->num_map * PIXEL_H;
-	vars->mlx_win = mlx_new_window(vars->mlx, x, y, "so_long");
+	vars->mlx_win = mlx_new_window(vars->mlx, x, y, argv[0]);
 	if (!vars->mlx)
 	{
 		print_error("mlx_win");
@@ -64,6 +64,6 @@ int	main(int argc, char *argv[])
 		ft_putstr_fd("Error\n", STDOUT_FILENO);
 		return (1);
 	}
-	so_long_window_init(&vars);
+	so_long_window_init(&vars, argv);
 	return (1);
 }
