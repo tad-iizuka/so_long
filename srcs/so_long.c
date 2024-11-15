@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:36 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/14 09:19:05 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/15 01:03:18 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	so_long_window_init(t_vars *vars, char *argv[])
 	}
 	so_long_layer_init(vars);
 	mlx_hook(vars->mlx_win, 33, 1L << 17, key_close, vars);
-	mlx_key_hook(vars->mlx_win, so_long_key_hook, vars);
+	mlx_hook(vars->mlx_win, ON_KEYDOWN, 1L << 0, so_long_key_hook, vars);
 	mlx_loop_hook(vars->mlx, so_long_timer, vars);
 	mlx_loop(vars->mlx);
 }

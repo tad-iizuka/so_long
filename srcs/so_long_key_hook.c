@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 10:38:21 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/14 11:52:24 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/15 01:07:03 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ int	so_long_key_hook(int keycode, t_vars *vars)
 	}
 	if (vars->complete)
 		return (1);
-	if ((char)keycode == KEY_W)
+	if ((char)keycode == KEY_W || (char)keycode == KEY_UP)
 		r = key_up(vars);
-	else if ((char)keycode == KEY_S)
+	else if ((char)keycode == KEY_S || (char)keycode == KEY_DOWN)
 		r = key_down(vars);
-	else if ((char)keycode == KEY_A)
+	else if ((char)keycode == KEY_A || (char)keycode == KEY_L)
 		r = key_left(vars);
-	else if ((char)keycode == KEY_D)
+	else if ((char)keycode == KEY_D || (char)keycode == KEY_R)
 		r = key_right(vars);
 	if (r)
 	{

@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/14 11:46:32 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/15 01:05:55 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@
 # define KEY_D 0x64
 # define KEY_A 0x61
 # define KEY_S 0x73
+# define KEY_UP 0x52
+# define KEY_DOWN 0x54
+# define KEY_L 0x51
+# define KEY_R 0x53
 # define KEY_ESC 0x1b
 
 # define DIR_W 0
@@ -52,6 +56,16 @@
 # define FRAME_MAX_C 7
 # define FRAME_MAX_P 8
 # define FRAME_MAX 1
+
+enum {
+	ON_KEYDOWN = 2,
+	ON_KEYUP = 3,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEUP = 5,
+	ON_MOUSEMOVE = 6,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 17
+};
 
 typedef struct s_map
 {
@@ -115,16 +129,20 @@ void	ft_print_utime(char *id);
 
 void	print_error(char *str);
 
-int		key_close(t_vars *vars);
-int		key_up(t_vars *vars);
-int		key_down(t_vars *vars);
-int		key_left(t_vars *vars);
-int		key_right(t_vars *vars);
+void	so_long_key_init(t_vars *vars);
 int		so_long_timer(t_vars *vars);
 int		so_long_map(char *path, t_vars *vars);
 void	so_long_layer_init(t_vars *vars);
 void	so_long_layer_update(t_vars *vars);
 int		so_long_key_hook(int keycode, t_vars *vars);
+
+int		key_down_handler(int keycode, t_vars *vars);
+int		key_up_handler(int keycode, t_vars *vars);
+int		key_close(t_vars *vars);
+int		key_up(t_vars *vars);
+int		key_down(t_vars *vars);
+int		key_left(t_vars *vars);
+int		key_right(t_vars *vars);
 
 t_map	*map_new(char *str);
 int		map_to_mtx(t_vars *vars);
