@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 10:38:21 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/15 01:07:03 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/15 14:44:47 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@ int	key_close(t_vars *vars)
 
 int	so_long_key_hook(int keycode, t_vars *vars)
 {
-	int	r;
-
-	r = False;
 	if ((char)keycode == KEY_ESC)
 	{
 		key_close(vars);
@@ -35,19 +32,14 @@ int	so_long_key_hook(int keycode, t_vars *vars)
 	}
 	if (vars->complete)
 		return (1);
-	if ((char)keycode == KEY_W || (char)keycode == KEY_UP)
-		r = key_up(vars);
-	else if ((char)keycode == KEY_S || (char)keycode == KEY_DOWN)
-		r = key_down(vars);
-	else if ((char)keycode == KEY_A || (char)keycode == KEY_L)
-		r = key_left(vars);
-	else if ((char)keycode == KEY_D || (char)keycode == KEY_R)
-		r = key_right(vars);
-	if (r)
+	if (so_long_key_direction(vars, keycode))
 	{
 		so_long_layer_update(vars);
+		vars->step++;
 		if (!BONUS)
-			ft_printf("STEP: \x1b[32m[%04d]\x1b[0m\n", ++vars->step);
+			ft_printf("STEP: \x1b[32m[%04d]\x1b[0m\n", vars->step);
+		else
+			so_long_layer_update_bonus(vars);
 	}
 	return (0);
 }

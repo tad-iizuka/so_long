@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/15 13:49:31 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/15 14:39:08 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,8 +139,9 @@ int		so_long_timer(t_vars *vars);
 int		so_long_map(char *path, t_vars *vars);
 void	so_long_layer_init(t_vars *vars);
 void	so_long_layer_update(t_vars *vars);
+void	so_long_layer_update_bonus(t_vars *vars);
 int		so_long_key_hook(int keycode, t_vars *vars);
-
+int		so_long_key_direction(t_vars *vars, int keycode);
 int		key_close(t_vars *vars);
 int		key_up(t_vars *vars);
 int		key_down(t_vars *vars);
@@ -162,5 +163,6 @@ void	set_0(t_texture *txt);
 void	create_images_alpha(t_vars *vars);
 void	create_images_num(t_vars *vars);
 void	create_image_one(t_vars *vars, void **img, char *path, int i);
+\
 
 #endif

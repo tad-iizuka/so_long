@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:48:10 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/15 13:59:08 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/15 14:33:29 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	image_free_one(void **p)
 	free(img->image);
 	free(img);
 }
-
 
 void	image_free(t_vars *vars)
 {
