@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:16:22 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/14 14:50:04 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/15 12:35:33 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	key_up(t_vars *vars)
 	type = vars->texture[((vars->y - 1) * vars->w) + vars->x].type;
 	if (type == '0' || type == 'C' || (type == 'E' && vars->num_c == 0))
 	{
-		set_p(&vars->texture[((vars->y - 1) * vars->w) + vars->x], DIR_W);
+		set_p(&vars->texture[((vars->y - 1) * vars->w) + vars->x], DIR_W, type);
 		set_0(&vars->texture[((vars->y) * vars->w) + vars->x]);
 		vars->y--;
 		if (type == 'C')
@@ -43,7 +43,7 @@ int	key_down(t_vars *vars)
 	type = vars->texture[((vars->y + 1) * vars->w) + vars->x].type;
 	if (type == '0' || type == 'C' || (type == 'E' && vars->num_c == 0))
 	{
-		set_p(&vars->texture[((vars->y + 1) * vars->w) + vars->x], DIR_S);
+		set_p(&vars->texture[((vars->y + 1) * vars->w) + vars->x], DIR_S, type);
 		set_0(&vars->texture[((vars->y) * vars->w) + vars->x]);
 		vars->y++;
 		if (type == 'C')
@@ -67,7 +67,7 @@ int	key_left(t_vars *vars)
 	type = vars->texture[(vars->y * vars->w) + (vars->x - 1)].type;
 	if (type == '0' || type == 'C' || (type == 'E' && vars->num_c == 0))
 	{
-		set_p(&vars->texture[(vars->y * vars->w) + (vars->x - 1)], DIR_A);
+		set_p(&vars->texture[(vars->y * vars->w) + (vars->x - 1)], DIR_A, type);
 		set_0(&vars->texture[(vars->y * vars->w) + vars->x]);
 		vars->x--;
 		if (type == 'C')
@@ -91,7 +91,7 @@ int	key_right(t_vars *vars)
 	type = vars->texture[(vars->y * vars->w) + (vars->x + 1)].type;
 	if (type == '0' || type == 'C' || (type == 'E' && vars->num_c == 0))
 	{
-		set_p(&vars->texture[(vars->y * vars->w) + (vars->x + 1)], DIR_D);
+		set_p(&vars->texture[(vars->y * vars->w) + (vars->x + 1)], DIR_D, type);
 		set_0(&vars->texture[(vars->y * vars->w) + vars->x]);
 		vars->x++;
 		if (type == 'C')

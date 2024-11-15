@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/15 01:05:55 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/15 12:36:38 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ void	map_find_pos(t_vars *vars);
 int		get_frame_max(char type);
 int		is_animation(char type);
 
-void	set_p(t_texture *txt, int direction);
+void	set_p(t_texture *txt, int direction, char type);
 void	set_0(t_texture *txt);
 
 #endif
