@@ -43,7 +43,7 @@ static void	display_score(t_vars *vars, char *str)
 		img = get_image_num(vars, '0');
 		mlx_put_image_to_window(vars->mlx, \
 			vars->mlx_win, img, \
-			(i + 1 + 6) * 25, 16);
+			((vars->w * PIXEL_W / 2) - (25 * 2)) + i * 25, 16);
 		i++;
 	}
 	i = 0;
@@ -52,7 +52,8 @@ static void	display_score(t_vars *vars, char *str)
 		img = get_image_num(vars, str[i]);
 		mlx_put_image_to_window(vars->mlx, \
 			vars->mlx_win, img, \
-			(i + 1 + 6 + z) * 25, 16);
+			((vars->w * PIXEL_W / 2) - (25 * 2)) \
+			+ (z + i) * 25, 16);
 		i++;
 	}
 }
@@ -68,7 +69,9 @@ static void	display_str(t_vars *vars, char *str)
 		img = get_image_alpha(vars, str[i]);
 		mlx_put_image_to_window(vars->mlx, \
 			vars->mlx_win, img, \
-			(i + 1) * 25, 16);
+			((vars->w * PIXEL_W / 2) - (25 * 2)) \
+			+ (i * 25), \
+			((vars->num_map * PIXEL_H / 2) - 16));
 		i++;
 	}
 }
@@ -77,11 +80,12 @@ void	so_long_layer_update_bonus(t_vars *vars)
 {
 	char	*p;
 
-	display_str(vars, "SCORE");
 	p = ft_itoa(vars->step);
 	if (p)
 	{
 		display_score(vars, p);
 		free(p);
 	}
+	if (vars->complete)
+		display_str(vars, "GOAL");
 }
