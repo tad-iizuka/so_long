@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/15 12:36:38 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/15 13:49:31 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@
 # define FRAME_MAX_C 7
 # define FRAME_MAX_P 8
 # define FRAME_MAX 1
+
+# define NUM_ALPHA 26
+# define NUM_NUM 10
 
 enum {
 	ON_KEYDOWN = 2,
@@ -117,6 +120,8 @@ typedef struct s_vars {
 	void		*imgPS[8];
 	void		*imgPA[8];
 	void		*imgPD[8];
+	void		*imgALPHA[NUM_ALPHA];
+	void		*imgNUM[NUM_NUM];
 	t_map		**map;
 	char		*mtx;
 	t_texture	*texture;
@@ -136,8 +141,6 @@ void	so_long_layer_init(t_vars *vars);
 void	so_long_layer_update(t_vars *vars);
 int		so_long_key_hook(int keycode, t_vars *vars);
 
-int		key_down_handler(int keycode, t_vars *vars);
-int		key_up_handler(int keycode, t_vars *vars);
 int		key_close(t_vars *vars);
 int		key_up(t_vars *vars);
 int		key_down(t_vars *vars);
@@ -156,5 +159,8 @@ int		is_animation(char type);
 
 void	set_p(t_texture *txt, int direction, char type);
 void	set_0(t_texture *txt);
+void	create_images_alpha(t_vars *vars);
+void	create_images_num(t_vars *vars);
+void	create_image_one(t_vars *vars, void **img, char *path, int i);
 
 #endif

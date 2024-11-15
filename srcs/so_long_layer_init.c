@@ -6,19 +6,11 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/14 14:22:07 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/15 13:59:03 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include    "../header/so_long.h"
-
-static void	create_image_one(t_vars *vars, void **img, char *path)
-{
-	int		w;
-	int		h;
-
-	img[0] = mlx_xpm_file_to_image(vars->mlx, path, &w, &h);
-}
 
 static int	create_image(t_vars *vars, void **img, char *path, char type)
 {
@@ -49,14 +41,19 @@ static int	create_image(t_vars *vars, void **img, char *path, char type)
 
 static void	create_images(t_vars *vars)
 {
-	create_image_one(vars, vars->img0, "./xpm/0/0.xpm");
-	create_image_one(vars, vars->img1, "./xpm/1/0.xpm");
-	create_image_one(vars, vars->imgE, "./xpm/E/0.xpm");
+	create_image_one(vars, vars->img0, "./xpm/0/0.xpm", 0);
+	create_image_one(vars, vars->img1, "./xpm/1/0.xpm", 0);
+	create_image_one(vars, vars->imgE, "./xpm/E/0.xpm", 0);
 	create_image(vars, vars->imgC, "./xpm/C/", TYPE_C);
 	create_image(vars, vars->imgPW, "./xpm/P/W/", TYPE_P);
 	create_image(vars, vars->imgPS, "./xpm/P/S/", TYPE_P);
 	create_image(vars, vars->imgPA, "./xpm/P/A/", TYPE_P);
 	create_image(vars, vars->imgPD, "./xpm/P/D/", TYPE_P);
+	if (BONUS)
+	{
+		create_images_alpha(vars);
+		create_images_num(vars);
+	}
 }
 
 void	so_long_layer_init(t_vars *vars)

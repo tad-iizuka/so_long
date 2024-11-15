@@ -6,20 +6,19 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:48:10 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/14 14:22:38 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/15 13:59:08 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../header/so_long.h"
 
-void	image_free_sub(void **p, char type)
+void	image_free_sub(void **p, int size)
 {
 	int		i;
 	t_img	*img;
 
 	i = 0;
-	i = 0;
-	while (i < get_frame_max(type))
+	while (i < size)
 	{
 		if (p[i])
 		{
@@ -31,33 +30,31 @@ void	image_free_sub(void **p, char type)
 	}
 }
 
-void	image_free(t_vars *vars)
+void	image_free_one(void **p)
 {
 	t_img	*img;
 
-	if (vars->img0[0])
+	img = p[0];
+	free(img->image);
+	free(img);
+}
+
+
+void	image_free(t_vars *vars)
+{
+	image_free_one(vars->img0);
+	image_free_one(vars->img1);
+	image_free_one(vars->imgE);
+	image_free_sub(vars->imgC, get_frame_max(TYPE_C));
+	image_free_sub(vars->imgPW, get_frame_max(TYPE_P));
+	image_free_sub(vars->imgPS, get_frame_max(TYPE_P));
+	image_free_sub(vars->imgPA, get_frame_max(TYPE_P));
+	image_free_sub(vars->imgPD, get_frame_max(TYPE_P));
+	if (BONUS)
 	{
-		img = vars->img0[0];
-		free(img->image);
-		free(img);
+		image_free_sub(vars->imgALPHA, NUM_ALPHA);
+		image_free_sub(vars->imgNUM, NUM_NUM);
 	}
-	if (vars->img1[0])
-	{
-		img = vars->img1[0];
-		free(img->image);
-		free(img);
-	}
-	if (vars->imgE[0])
-	{
-		img = vars->imgE[0];
-		free(img->image);
-		free(img);
-	}
-	image_free_sub(vars->imgC, TYPE_C);
-	image_free_sub(vars->imgPW, TYPE_P);
-	image_free_sub(vars->imgPS, TYPE_P);
-	image_free_sub(vars->imgPA, TYPE_P);
-	image_free_sub(vars->imgPD, TYPE_P);
 }
 
 void	map_free(t_vars *vars)
