@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 12:29:39 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 14:07:29 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ typedef struct s_vars {
 	int			num_map;
 	int			num_c;
 	int			num_wizard;
+	int			num_space;
 	int			step;
 	int			complete;
 	void		*img0[1];

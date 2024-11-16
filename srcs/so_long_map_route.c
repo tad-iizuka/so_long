@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 06:43:23 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 13:52:56 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 14:07:59 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	map_count_for_wizard(t_vars *vars, char *mtx)
 			w++;
 		i++;
 	}
-	vars->num_wizard = w;
+	vars->num_space = w;
 }
 
 int	map_check_route(t_vars *vars)
