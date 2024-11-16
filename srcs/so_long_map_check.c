@@ -6,11 +6,22 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:07:47 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/12 11:04:04 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 14:03:53 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../header/so_long.h"
+
+void	map_calc_wizard(t_vars *vars)
+{
+	int	w;
+
+	w = vars->num_wizard - vars->num_c;
+	if (w < 5)
+		vars->num_wizard = 1;
+	else
+		vars->num_wizard = ((w - 5) / 10) + 1;
+}
 
 int	map_check_wall(t_vars *vars)
 {
@@ -113,6 +124,8 @@ int	map_check_main(t_vars *vars)
 		map_find_pos(vars);
 		map_to_mtx(vars);
 		r &= map_check_route(vars);
+		if (BONUS && r)
+			map_calc_wizard(vars);
 	}
 	return (r);
 }
