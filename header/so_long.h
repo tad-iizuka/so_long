@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 14:16:48 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 07:17:03 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ typedef struct s_vars {
 	size_t		frame;
 }	t_vars;
 
+void	ft_random_init(void);
 int		ft_random(int range);
 void	ft_print_utime(char *id);
 

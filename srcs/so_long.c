@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:36 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/15 01:03:18 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 07:16:49 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	so_long_init(t_vars *vars)
 	vars->mtx = NULL;
 	vars->texture = NULL;
 	vars->step = 0;
+	ft_random_init();
 }
 
 void	so_long_window_init(t_vars *vars, char *argv[])

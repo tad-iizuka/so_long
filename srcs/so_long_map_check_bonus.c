@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:07:47 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 14:57:37 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 07:19:08 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	map_calc_wizard(t_vars *vars)
 
 	w = vars->num_space - vars->num_c;
 	vars->num_space = w;
-	if (w < 5)
+	if (w < 10)
 		vars->num_wizard = 1;
 	else
-		vars->num_wizard = ((w - 5) / 20) + 1;
+		vars->num_wizard = ((w - 10) / 25) + 1;
 }
 
 void	map_create_wizard(t_vars *vars)
