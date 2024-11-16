@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 07:43:28 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 08:30:51 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,22 @@ static void	create_images(t_vars *vars)
 {
 	create_image_one(vars, vars->img0, "./xpm/0/0.xpm", 0);
 	create_image_one(vars, vars->img1, "./xpm/1/0.xpm", 0);
-	create_image_one(vars, vars->imgE, "./xpm/E/0.xpm", 0);
-	create_image(vars, vars->imgC, "./xpm/C/", TYPE_C);
-	create_image(vars, vars->imgPW, "./xpm/P/W/", TYPE_P);
-	create_image(vars, vars->imgPS, "./xpm/P/S/", TYPE_P);
-	create_image(vars, vars->imgPA, "./xpm/P/A/", TYPE_P);
-	create_image(vars, vars->imgPD, "./xpm/P/D/", TYPE_P);
+	create_image_one(vars, vars->img_e, "./xpm/E/0.xpm", 0);
+	create_image(vars, vars->img_c, "./xpm/C/", TYPE_C);
+	create_image(vars, vars->img_pw, "./xpm/P/W/", TYPE_P);
+	create_image(vars, vars->img_ps, "./xpm/P/S/", TYPE_P);
+	create_image(vars, vars->img_pa, "./xpm/P/A/", TYPE_P);
+	create_image(vars, vars->img_pd, "./xpm/P/D/", TYPE_P);
 	if (BONUS)
 	{
+		vars->wizard_update = 0;
 		create_images_alnum(vars, "A.xpm", "./xpm/ALPHA/", NUM_ALPHA);
 		create_images_alnum(vars, "0.xpm", "./xpm/NUM/", NUM_NUM);
 		create_images_alnum(vars, "a.xpm", "./xpm/ALPHA/", NUM_SYM);
-		create_image(vars, vars->imgWW, "./xpm/W/W/", TYPE_W);
-		create_image(vars, vars->imgWS, "./xpm/W/S/", TYPE_W);
-		create_image(vars, vars->imgWA, "./xpm/W/A/", TYPE_W);
-		create_image(vars, vars->imgWD, "./xpm/W/D/", TYPE_W);
+		create_image(vars, vars->img_ww, "./xpm/W/W/", TYPE_W);
+		create_image(vars, vars->img_ws, "./xpm/W/S/", TYPE_W);
+		create_image(vars, vars->img_wa, "./xpm/W/A/", TYPE_W);
+		create_image(vars, vars->img_wd, "./xpm/W/D/", TYPE_W);
 	}
 }
 
@@ -78,7 +79,7 @@ void	so_long_layer_init(t_vars *vars)
 		vars->texture[i].animation = is_animation(vars->mtx[i]);
 		vars->texture[i].frame = 0;
 		vars->texture[i].max_frame = get_frame_max(vars->mtx[i]);
-		vars->texture[i].direction = DIR_S;
+		vars->texture[i].direction = get_direction(vars->mtx[i]);
 		vars->texture[i].repeat = True;
 		i++;
 	}

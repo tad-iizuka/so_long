@@ -12,24 +12,19 @@
 
 #include    "../header/so_long.h"
 
-static void	*get_image_alpha(t_vars *vars, char c)
+void	*get_image_w(t_vars *vars, int i)
 {
 	void	*img;
 
 	img = NULL;
-	if (c <= 'Z')
-		img = vars->imgALPHA[c - 'A'];
-	else
-		img = vars->imgSYM[c - 'a'];
-	return (img);
-}
-
-static void	*get_image_num(t_vars *vars, char c)
-{
-	void	*img;
-
-	img = NULL;
-	img = vars->imgNUM[c - '0'];
+	if (vars->texture[i].direction == DIR_W)
+		img = vars->img_ww[vars->texture[i].frame];
+	else if (vars->texture[i].direction == DIR_S)
+		img = vars->img_ws[vars->texture[i].frame];
+	else if (vars->texture[i].direction == DIR_A)
+		img = vars->img_wa[vars->texture[i].frame];
+	else if (vars->texture[i].direction == DIR_D)
+		img = vars->img_wd[vars->texture[i].frame];
 	return (img);
 }
 
@@ -79,6 +74,22 @@ static void	display_str(t_vars *vars, char *str)
 	}
 }
 
+static void	update_wizard_delay_timer(t_vars *vars)
+{
+	int	i;
+
+	i = 0;
+	while (vars->size_map > i)
+	{
+		if (vars->texture[i].type == TYPE_W)
+		{
+			vars->texture[i].animation = True;
+			vars->texture[i].update = True;
+		}
+		i++;
+	}
+}
+
 void	so_long_layer_update_bonus(t_vars *vars)
 {
 	char	*p;
@@ -91,4 +102,12 @@ void	so_long_layer_update_bonus(t_vars *vars)
 	}
 	if (vars->complete)
 		display_str(vars, "GOALa");
+	vars->wizard_update++;
+	if (vars->wizard_update < WIZARD_ANIMATION_DELAY)
+		type_display(vars, 'W');
+	if (vars->wizard_update > WIZARD_ANIMATION_DELAY && \
+		vars->wizard_update % WIZARD_ANIMATION_DELAY == 0)
+		type_display(vars, 'W');
+	if (vars->wizard_update == WIZARD_ANIMATION_DELAY)
+		update_wizard_delay_timer(vars);
 }

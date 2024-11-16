@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:48:10 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 07:44:14 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 08:31:28 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,21 @@ void	image_free(t_vars *vars)
 {
 	image_free_one(vars->img0);
 	image_free_one(vars->img1);
-	image_free_one(vars->imgE);
-	image_free_sub(vars->imgC, get_frame_max(TYPE_C));
-	image_free_sub(vars->imgPW, get_frame_max(TYPE_P));
-	image_free_sub(vars->imgPS, get_frame_max(TYPE_P));
-	image_free_sub(vars->imgPA, get_frame_max(TYPE_P));
-	image_free_sub(vars->imgPD, get_frame_max(TYPE_P));
+	image_free_one(vars->img_e);
+	image_free_sub(vars->img_c, get_frame_max(TYPE_C));
+	image_free_sub(vars->img_pw, get_frame_max(TYPE_P));
+	image_free_sub(vars->img_ps, get_frame_max(TYPE_P));
+	image_free_sub(vars->img_pa, get_frame_max(TYPE_P));
+	image_free_sub(vars->img_pd, get_frame_max(TYPE_P));
 	if (BONUS)
 	{
-		image_free_sub(vars->imgALPHA, NUM_ALPHA);
-		image_free_sub(vars->imgNUM, NUM_NUM);
-		image_free_sub(vars->imgSYM, NUM_SYM);
-		image_free_sub(vars->imgWW, get_frame_max(TYPE_W));
-		image_free_sub(vars->imgWS, get_frame_max(TYPE_W));
-		image_free_sub(vars->imgWA, get_frame_max(TYPE_W));
-		image_free_sub(vars->imgWD, get_frame_max(TYPE_W));
+		image_free_sub(vars->img_alpha, NUM_ALPHA);
+		image_free_sub(vars->img_num, NUM_NUM);
+		image_free_sub(vars->img_sym, NUM_SYM);
+		image_free_sub(vars->img_ww, get_frame_max(TYPE_W));
+		image_free_sub(vars->img_ws, get_frame_max(TYPE_W));
+		image_free_sub(vars->img_wa, get_frame_max(TYPE_W));
+		image_free_sub(vars->img_wd, get_frame_max(TYPE_W));
 	}
 }
 

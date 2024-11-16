@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:48:10 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/14 13:12:11 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 08:27:23 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ static void	map_count_type(t_map *map)
 		else if (map->map[i] == '1')
 			map->num_1++;
 		else if (map->map[i] == 'C')
-			map->num_C++;
+			map->num_c++;
 		else if (map->map[i] == 'E')
-			map->num_E++;
+			map->num_e++;
 		else if (map->map[i] == 'P')
-			map->num_P++;
+			map->num_p++;
 		i++;
 	}
 }
@@ -68,9 +68,9 @@ t_map	*map_new(char *str)
 	map->x = ft_strlen(str);
 	map->num_0 = 0;
 	map->num_1 = 0;
-	map->num_C = 0;
-	map->num_E = 0;
-	map->num_P = 0;
+	map->num_c = 0;
+	map->num_e = 0;
+	map->num_p = 0;
 	map_count_type(map);
 	return (map);
 }

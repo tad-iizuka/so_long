@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:02:55 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 07:16:21 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 08:01:59 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ft_random_init(void)
 	gettimeofday(&mytime, NULL);
 	srand(mytime.tv_usec);
 }
-
 
 int	ft_random(int range)
 {

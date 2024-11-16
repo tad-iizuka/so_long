@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_layer_init_bonus.c                         :+:      :+:    :+:   */
+/*   so_long_layer_common_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
+/*   Created: 2024/11/16 08:06:52 by tiizuka           #+#    #+#             */
 /*   Updated: 2024/11/16 08:31:28 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include    "../header/so_long.h"
 
-void	create_images_alnum(t_vars *vars, char *name, char *path, int num)
+void	*get_image_alpha(t_vars *vars, char c)
 {
-	int		i;
-	char	str[6];
-	char	*p;
+	void	*img;
 
-	i = 0;
-	while (i < num)
-	{
-		ft_strlcpy(&str[0], name, sizeof(str));
-		str[0] += i;
-		p = ft_strjoin(path, str);
-		if (p)
-		{
-			if (num == NUM_ALPHA)
-				create_image_one(vars, vars->img_alpha, p, i);
-			else if (num == NUM_NUM)
-				create_image_one(vars, vars->img_num, p, i);
-			else
-				create_image_one(vars, vars->img_sym, p, i);
-			free(p);
-		}
-		else
-			break ;
-		i++;
-	}
+	img = NULL;
+	if (c <= 'Z')
+		img = vars->img_alpha[c - 'A'];
+	else
+		img = vars->img_sym[c - 'a'];
+	return (img);
+}
+
+void	*get_image_num(t_vars *vars, char c)
+{
+	void	*img;
+
+	img = NULL;
+	img = vars->img_num[c - '0'];
+	return (img);
 }

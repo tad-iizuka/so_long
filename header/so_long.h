@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 07:43:17 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 08:59:29 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@
 #  define BONUS 0
 # endif
 
-# define WIN_W	1920 / 2
-# define WIN_H	1080 / 2
 # define PIXEL_W	64
 # define PIXEL_H	64
 # define FPS	6000 
 // # define FPS	3000
+# define WIZARD_ANIMATION_DELAY 3
+# define WIZARD_UPDATE 3
 
 # define KEY_W 0x77
 # define KEY_D 0x64
@@ -81,9 +81,9 @@ typedef struct s_map
 	int		x;
 	int		num_0;
 	int		num_1;
-	int		num_C;
-	int		num_E;
-	int		num_P;
+	int		num_c;
+	int		num_e;
+	int		num_p;
 }	t_map;
 
 enum e_texture
@@ -122,24 +122,25 @@ typedef struct s_vars {
 	int			complete;
 	void		*img0[FRAME_MAX];
 	void		*img1[FRAME_MAX];
-	void		*imgC[FRAME_MAX_C];
-	void		*imgE[FRAME_MAX];
-	void		*imgPW[FRAME_MAX_P];
-	void		*imgPS[FRAME_MAX_P];
-	void		*imgPA[FRAME_MAX_P];
-	void		*imgPD[FRAME_MAX_P];
-	void		*imgWW[FRAME_MAX_W];
-	void		*imgWS[FRAME_MAX_W];
-	void		*imgWA[FRAME_MAX_W];
-	void		*imgWD[FRAME_MAX_W];
-	void		*imgALPHA[NUM_ALPHA];
-	void		*imgNUM[NUM_NUM];
-	void		*imgSYM[NUM_SYM];
+	void		*img_c[FRAME_MAX_C];
+	void		*img_e[FRAME_MAX];
+	void		*img_pw[FRAME_MAX_P];
+	void		*img_ps[FRAME_MAX_P];
+	void		*img_pa[FRAME_MAX_P];
+	void		*img_pd[FRAME_MAX_P];
+	void		*img_ww[FRAME_MAX_W];
+	void		*img_ws[FRAME_MAX_W];
+	void		*img_wa[FRAME_MAX_W];
+	void		*img_wd[FRAME_MAX_W];
+	void		*img_alpha[NUM_ALPHA];
+	void		*img_num[NUM_NUM];
+	void		*img_sym[NUM_SYM];
 	t_map		**map;
 	char		*mtx;
 	t_texture	*texture;
 	t_img		*type[5];
 	size_t		frame;
+	int			wizard_update;
 }	t_vars;
 
 void	ft_random_init(void);
@@ -172,11 +173,16 @@ void	map_calc_wizard(t_vars *vars);
 void	map_create_wizard(t_vars *vars);
 
 int		get_frame_max(char type);
+int		get_direction(char type);
 int		is_animation(char type);
+void	type_display(t_vars *vars, char type);
 
 void	set_p(t_texture *txt, int direction, char type);
 void	set_0(t_texture *txt);
 void	create_images_alnum(t_vars *vars, char *name, char *path, int num);
 void	create_image_one(t_vars *vars, void **img, char *path, int i);
+void	*get_image_alpha(t_vars *vars, char c);
+void	*get_image_num(t_vars *vars, char c);
+void	*get_image_w(t_vars *vars, int i);
 
 #endif

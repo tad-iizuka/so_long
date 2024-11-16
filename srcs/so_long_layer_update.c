@@ -6,27 +6,11 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 07:50:41 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 08:59:26 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include    "../header/so_long.h"
-
-static void	*get_image_w(t_vars *vars, int i)
-{
-	void	*img;
-
-	img = NULL;
-	if (vars->texture[i].direction == DIR_W)
-		img = vars->imgWW[vars->texture[i].frame];
-	else if (vars->texture[i].direction == DIR_S)
-		img = vars->imgWS[vars->texture[i].frame];
-	else if (vars->texture[i].direction == DIR_A)
-		img = vars->imgWA[vars->texture[i].frame];
-	else if (vars->texture[i].direction == DIR_D)
-		img = vars->imgWD[vars->texture[i].frame];
-	return (img);
-}
 
 static void	*get_image_p(t_vars *vars, int i)
 {
@@ -34,13 +18,13 @@ static void	*get_image_p(t_vars *vars, int i)
 
 	img = NULL;
 	if (vars->texture[i].direction == DIR_W)
-		img = vars->imgPW[vars->texture[i].frame];
+		img = vars->img_pw[vars->texture[i].frame];
 	else if (vars->texture[i].direction == DIR_S)
-		img = vars->imgPS[vars->texture[i].frame];
+		img = vars->img_ps[vars->texture[i].frame];
 	else if (vars->texture[i].direction == DIR_A)
-		img = vars->imgPA[vars->texture[i].frame];
+		img = vars->img_pa[vars->texture[i].frame];
 	else if (vars->texture[i].direction == DIR_D)
-		img = vars->imgPD[vars->texture[i].frame];
+		img = vars->img_pd[vars->texture[i].frame];
 	return (img);
 }
 
@@ -54,9 +38,9 @@ static void	*get_image(t_vars *vars, char type, int i)
 	else if (type == TYPE_1)
 		img = vars->img1[vars->texture[i].frame];
 	else if (type == TYPE_C)
-		img = vars->imgC[vars->texture[i].frame];
+		img = vars->img_c[vars->texture[i].frame];
 	else if (type == TYPE_E)
-		img = vars->imgE[vars->texture[i].frame];
+		img = vars->img_e[vars->texture[i].frame];
 	else if (type == TYPE_P)
 		img = get_image_p(vars, i);
 	else if (type == TYPE_W)
@@ -78,7 +62,7 @@ static void	update_animation(t_vars *vars, char type, int i)
 	}
 }
 
-static void	type(t_vars *vars, char type)
+void	type_display(t_vars *vars, char type)
 {
 	int		i;
 	t_img	*img;
@@ -102,11 +86,9 @@ static void	type(t_vars *vars, char type)
 
 void	so_long_layer_update(t_vars *vars)
 {
-	type(vars, '1');
-	type(vars, '0');
-	type(vars, 'C');
-	type(vars, 'E');
-	type(vars, 'P');
-	if (BONUS)
-		type(vars, 'W');
+	type_display(vars, '1');
+	type_display(vars, '0');
+	type_display(vars, 'C');
+	type_display(vars, 'E');
+	type_display(vars, 'P');
 }

@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:07:47 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 14:16:18 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 08:26:32 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ static int	map_check_items(t_vars *vars)
 	c = 0;
 	while (vars->num_map > i)
 	{
-		e += vars->map[i]->num_E;
-		p += vars->map[i]->num_P;
-		c += vars->map[i]->num_C;
+		e += vars->map[i]->num_e;
+		p += vars->map[i]->num_p;
+		c += vars->map[i]->num_c;
 		i++;
 	}
 	if (e != 1 || p != 1 || c == 0)
@@ -89,9 +89,9 @@ static int	map_check_format(t_vars *vars)
 		s = 0;
 		s += vars->map[i]->num_0;
 		s += vars->map[i]->num_1;
-		s += vars->map[i]->num_E;
-		s += vars->map[i]->num_P;
-		s += vars->map[i]->num_C;
+		s += vars->map[i]->num_e;
+		s += vars->map[i]->num_p;
+		s += vars->map[i]->num_c;
 		if (s != vars->w)
 			return (False);
 		i++;
