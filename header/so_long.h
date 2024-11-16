@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 14:07:29 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 14:16:48 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,8 @@ void	map_free(t_vars *vars);
 int		map_check_main(t_vars *vars);
 int		map_check_route(t_vars *vars);
 void	map_find_pos(t_vars *vars);
+void	map_calc_wizard(t_vars *vars);
+void	map_create_wizard(t_vars *vars);
 
 int		get_frame_max(char type);
 int		is_animation(char type);
@@ -169,6 +171,5 @@ void	set_p(t_texture *txt, int direction, char type);
 void	set_0(t_texture *txt);
 void	create_images_alnum(t_vars *vars, char *name, char *path, int num);
 void	create_image_one(t_vars *vars, void **img, char *path, int i);
-\
 
 #endif
