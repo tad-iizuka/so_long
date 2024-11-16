@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/15 12:08:33 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 12:24:46 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@
 
 # define NUM_ALPHA 26
 # define NUM_NUM 10
+# define NUM_SYM 3
+// a: !
+// b: ?
+// c: 
 
 enum {
 	ON_KEYDOWN = 2,
@@ -97,7 +101,7 @@ typedef struct s_texture
 	int		animation;
 	int		frame;
 	int		max_frame;
-	int		direction;	// 0:w, 1:s, 2:a, 3:d
+	int		direction;
 	int		repeat;
 }	t_texture;
 
@@ -122,6 +126,7 @@ typedef struct s_vars {
 	void		*imgPD[8];
 	void		*imgALPHA[NUM_ALPHA];
 	void		*imgNUM[NUM_NUM];
+	void		*imgSYM[NUM_SYM];
 	t_map		**map;
 	char		*mtx;
 	t_texture	*texture;
@@ -160,8 +165,7 @@ int		is_animation(char type);
 
 void	set_p(t_texture *txt, int direction, char type);
 void	set_0(t_texture *txt);
-void	create_images_alpha(t_vars *vars);
-void	create_images_num(t_vars *vars);
+void	create_images_alnum(t_vars *vars, char *name, char *path, int num);
 void	create_image_one(t_vars *vars, void **img, char *path, int i);
 \
 

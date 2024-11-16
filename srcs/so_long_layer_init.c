@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/15 13:59:03 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 12:12:08 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ static void	create_images(t_vars *vars)
 	create_image(vars, vars->imgPD, "./xpm/P/D/", TYPE_P);
 	if (BONUS)
 	{
-		create_images_alpha(vars);
-		create_images_num(vars);
+		create_images_alnum(vars, "A.xpm", "./xpm/ALPHA/", NUM_ALPHA);
+		create_images_alnum(vars, "0.xpm", "./xpm/NUM/", NUM_NUM);
+		create_images_alnum(vars, "a.xpm", "./xpm/ALPHA/", NUM_SYM);
 	}
 }
 

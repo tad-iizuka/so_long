@@ -17,7 +17,10 @@ static void	*get_image_alpha(t_vars *vars, char c)
 	void	*img;
 
 	img = NULL;
-	img = vars->imgALPHA[c - 'A'];
+	if (c <= 'Z')
+		img = vars->imgALPHA[c - 'A'];
+	else
+		img = vars->imgSYM[c - 'a'];
 	return (img);
 }
 
@@ -69,7 +72,7 @@ static void	display_str(t_vars *vars, char *str)
 		img = get_image_alpha(vars, str[i]);
 		mlx_put_image_to_window(vars->mlx, \
 			vars->mlx_win, img, \
-			((vars->w * PIXEL_W / 2) - (25 * 2)) \
+			((vars->w * PIXEL_W / 2) - ((25 * ft_strlen(str)) / 2)) \
 			+ (i * 25), \
 			((vars->num_map * PIXEL_H / 2) - 16));
 		i++;
@@ -87,5 +90,5 @@ void	so_long_layer_update_bonus(t_vars *vars)
 		free(p);
 	}
 	if (vars->complete)
-		display_str(vars, "GOAL");
+		display_str(vars, "GOALa");
 }

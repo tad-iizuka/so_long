@@ -6,50 +6,32 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/15 13:58:39 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 12:16:17 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include    "../header/so_long.h"
 
-void	create_images_alpha(t_vars *vars)
+void	create_images_alnum(t_vars *vars, char *name, char *path, int num)
 {
 	int		i;
 	char	str[6];
 	char	*p;
 
 	i = 0;
-	while (i < NUM_ALPHA)
+	while (i < num)
 	{
-		ft_strlcpy(&str[0], "A.xpm", sizeof(str));
+		ft_strlcpy(&str[0], name, sizeof(str));
 		str[0] += i;
-		p = ft_strjoin("./xpm/ALPHA/", str);
+		p = ft_strjoin(path, str);
 		if (p)
 		{
-			create_image_one(vars, vars->imgALPHA, p, i);
-			free(p);
-		}
-		else
-			break ;
-		i++;
-	}
-}
-
-void	create_images_num(t_vars *vars)
-{
-	int		i;
-	char	str[6];
-	char	*p;
-
-	i = 0;
-	while (i < NUM_NUM)
-	{
-		ft_strlcpy(&str[0], "0.xpm", sizeof(str));
-		str[0] += i;
-		p = ft_strjoin("./xpm/NUM/", str);
-		if (p)
-		{
-			create_image_one(vars, vars->imgNUM, p, i);
+			if (num == NUM_ALPHA)
+				create_image_one(vars, vars->imgALPHA, p, i);
+			else if (num == NUM_NUM)
+				create_image_one(vars, vars->imgNUM, p, i);
+			else
+				create_image_one(vars, vars->imgSYM, p, i);
 			free(p);
 		}
 		else
