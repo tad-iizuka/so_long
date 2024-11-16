@@ -6,11 +6,27 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/14 14:35:59 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 07:50:41 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include    "../header/so_long.h"
+
+static void	*get_image_w(t_vars *vars, int i)
+{
+	void	*img;
+
+	img = NULL;
+	if (vars->texture[i].direction == DIR_W)
+		img = vars->imgWW[vars->texture[i].frame];
+	else if (vars->texture[i].direction == DIR_S)
+		img = vars->imgWS[vars->texture[i].frame];
+	else if (vars->texture[i].direction == DIR_A)
+		img = vars->imgWA[vars->texture[i].frame];
+	else if (vars->texture[i].direction == DIR_D)
+		img = vars->imgWD[vars->texture[i].frame];
+	return (img);
+}
 
 static void	*get_image_p(t_vars *vars, int i)
 {
@@ -43,6 +59,8 @@ static void	*get_image(t_vars *vars, char type, int i)
 		img = vars->imgE[vars->texture[i].frame];
 	else if (type == TYPE_P)
 		img = get_image_p(vars, i);
+	else if (type == TYPE_W)
+		img = get_image_w(vars, i);
 	return (img);
 }
 
@@ -89,4 +107,6 @@ void	so_long_layer_update(t_vars *vars)
 	type(vars, 'C');
 	type(vars, 'E');
 	type(vars, 'P');
+	if (BONUS)
+		type(vars, 'W');
 }

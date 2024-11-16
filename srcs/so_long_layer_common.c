@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/15 13:59:35 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 07:43:14 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	get_frame_max(char type)
 		return (FRAME_MAX_C);
 	else if (type == TYPE_P)
 		return (FRAME_MAX_P);
+	else if (type == TYPE_W)
+		return (FRAME_MAX_W);
 	return (FRAME_MAX);
 }
 

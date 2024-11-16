@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 07:17:03 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 07:43:17 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@
 # define FRAME_MAX_C 7
 # define FRAME_MAX_P 8
 # define FRAME_MAX 1
+# define FRAME_MAX_W 4
 
 # define NUM_ALPHA 26
 # define NUM_NUM 10
@@ -91,7 +92,8 @@ enum e_texture
 	TYPE_1 = '1',
 	TYPE_C = 'C',
 	TYPE_E = 'E',
-	TYPE_P = 'P'
+	TYPE_P = 'P',
+	TYPE_W = 'W'
 };
 
 typedef struct s_texture
@@ -118,14 +120,18 @@ typedef struct s_vars {
 	int			num_space;
 	int			step;
 	int			complete;
-	void		*img0[1];
-	void		*img1[1];
-	void		*imgC[10];
-	void		*imgE[10];
-	void		*imgPW[8];
-	void		*imgPS[8];
-	void		*imgPA[8];
-	void		*imgPD[8];
+	void		*img0[FRAME_MAX];
+	void		*img1[FRAME_MAX];
+	void		*imgC[FRAME_MAX_C];
+	void		*imgE[FRAME_MAX];
+	void		*imgPW[FRAME_MAX_P];
+	void		*imgPS[FRAME_MAX_P];
+	void		*imgPA[FRAME_MAX_P];
+	void		*imgPD[FRAME_MAX_P];
+	void		*imgWW[FRAME_MAX_W];
+	void		*imgWS[FRAME_MAX_W];
+	void		*imgWA[FRAME_MAX_W];
+	void		*imgWD[FRAME_MAX_W];
 	void		*imgALPHA[NUM_ALPHA];
 	void		*imgNUM[NUM_NUM];
 	void		*imgSYM[NUM_SYM];

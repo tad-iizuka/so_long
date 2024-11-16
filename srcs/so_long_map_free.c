@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:48:10 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 12:14:16 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/16 07:44:14 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ void	image_free(t_vars *vars)
 		image_free_sub(vars->imgALPHA, NUM_ALPHA);
 		image_free_sub(vars->imgNUM, NUM_NUM);
 		image_free_sub(vars->imgSYM, NUM_SYM);
+		image_free_sub(vars->imgWW, get_frame_max(TYPE_W));
+		image_free_sub(vars->imgWS, get_frame_max(TYPE_W));
+		image_free_sub(vars->imgWA, get_frame_max(TYPE_W));
+		image_free_sub(vars->imgWD, get_frame_max(TYPE_W));
 	}
 }
 
