@@ -109,7 +109,10 @@ void	so_long_layer_update_bonus(t_vars *vars)
 		type_display(vars, 'W');
 	if (vars->wizard_update > WIZARD_ANIMATION_DELAY && \
 		vars->wizard_update % WIZARD_ANIMATION_DELAY == 0)
+	{
+		villan_move(vars);
 		type_display(vars, 'W');
+	}
 	if (vars->wizard_update == WIZARD_ANIMATION_DELAY)
 		update_wizard_delay_timer(vars);
 }

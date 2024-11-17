@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_timer.c                                    :+:      :+:    :+:   */
+/*   so_long_layer_update_bonus_sub.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/02 12:28:47 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/17 13:09:20 by tiizuka          ###   ########.fr       */
+/*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
+/*   Updated: 2024/11/17 13:08:52 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"so_long.h"
+#include    "../header/so_long.h"
 
-int	so_long_timer(t_vars *vars)
+void	villan_move(t_vars *vars)
 {
-	vars->frame++;
-	if ((vars->frame % FPS) == 0)
+	int			i;
+	int			d;
+	t_texture	*tex;
+
+	(void)tex;
+	i = 0;
+	while (vars->size_map > i)
 	{
-		so_long_layer_update(vars);
-		if (BONUS)
-			so_long_layer_update_bonus(vars);
+		if (vars->texture[i].type == 'W')
+		{
+			d = ft_random(4);
+		}
+		i++;
 	}
-	return (True);
 }

@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/17 12:34:15 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/17 13:08:36 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,5 +186,7 @@ void	create_image_one(t_vars *vars, void **img, char *path, int i);
 void	*get_image_alpha(t_vars *vars, char c);
 void	*get_image_num(t_vars *vars, char c);
 void	*get_image_w(t_vars *vars, int i);
+
+void	villan_move(t_vars *vars);
 
 #endif
