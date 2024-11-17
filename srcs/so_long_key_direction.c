@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:16:22 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/17 12:38:23 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/17 07:06:49 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	check_hit_box(t_vars *vars, char type)
 		vars->complete = FINISH_SUCCESS;
 }
 
-int	key_cont(t_vars *vars, t_texture *to, int dir)
+static int	key_cont(t_vars *vars, t_texture *to, int dir)
 {
 	char	type;
 

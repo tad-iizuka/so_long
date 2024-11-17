@@ -28,7 +28,7 @@ void	*get_image_w(t_vars *vars, int i)
 	return (img);
 }
 
-static void	display_score(t_vars *vars, char *str)
+void	display_score(t_vars *vars, char *str)
 {
 	int		i;
 	int		z;
@@ -92,26 +92,16 @@ static void	update_wizard_delay_timer(t_vars *vars)
 
 void	so_long_layer_update_bonus(t_vars *vars)
 {
-	char	*p;
-
-	p = ft_itoa(vars->step);
-	if (p)
-	{
-		display_score(vars, p);
-		free(p);
-	}
 	if (vars->complete == FINISH_SUCCESS)
 		display_str(vars, "GOALa");
 	else if (vars->complete == FINISH_FAIL)
 		display_str(vars, "FAILa");
 	vars->wizard_update++;
-	if (vars->wizard_update < WIZARD_ANIMATION_DELAY)
-		type_display(vars, 'W');
-	if (vars->wizard_update > WIZARD_ANIMATION_DELAY && \
-		vars->wizard_update % WIZARD_ANIMATION_DELAY == 0)
+	// if (vars->wizard_update < WIZARD_ANIMATION_DELAY)
+	// 	type_display(vars, 'W');
+	if (vars->wizard_update > WIZARD_ANIMATION_DELAY)
 	{
 		villan_move(vars);
-		type_display(vars, 'W');
 	}
 	if (vars->wizard_update == WIZARD_ANIMATION_DELAY)
 		update_wizard_delay_timer(vars);

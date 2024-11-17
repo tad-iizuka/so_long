@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 08:02:11 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/17 09:27:17 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	is_animation(char type)
 	if (type == TYPE_0 || type == TYPE_1 || type == TYPE_E)
 		return (False);
 	if (type == TYPE_W)
-		return (False);
+		return (True);
 	return (BONUS);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 08:30:51 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/17 09:05:01 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	so_long_layer_init(t_vars *vars)
 		vars->texture[i].max_frame = get_frame_max(vars->mtx[i]);
 		vars->texture[i].direction = get_direction(vars->mtx[i]);
 		vars->texture[i].repeat = True;
+		vars->texture[i].check = False;
 		i++;
 	}
 	i = 0;

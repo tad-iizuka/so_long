@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 08:59:26 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/17 09:26:28 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	type_display(t_vars *vars, char type)
 	i = 0;
 	while (vars->size_map > i)
 	{
-		if (vars->texture[i].update && vars->texture[i].type == type)
+		if (vars->texture[i].type == type)
 		{
 			vars->texture[i].update = False;
 			img = get_image(vars, type, i);
@@ -79,6 +79,7 @@ void	type_display(t_vars *vars, char type)
 				i % vars->w * PIXEL_H, \
 				i / vars->w * PIXEL_W);
 			update_animation(vars, type, i);
+			vars->texture[i].check = False;
 		}
 		i++;
 	}
@@ -86,9 +87,21 @@ void	type_display(t_vars *vars, char type)
 
 void	so_long_layer_update(t_vars *vars)
 {
+	char	*p;
+
 	type_display(vars, '1');
 	type_display(vars, '0');
 	type_display(vars, 'C');
 	type_display(vars, 'E');
 	type_display(vars, 'P');
+	type_display(vars, 'W');
+	if (BONUS)
+	{
+		p = ft_itoa(vars->step);
+		if (p)
+		{
+			display_score(vars, p);
+			free(p);
+		}
+	}
 }

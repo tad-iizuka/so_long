@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_timer.c                                    :+:      :+:    :+:   */
+/*   so_long_key_common_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/02 12:28:47 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/17 08:06:46 by tiizuka          ###   ########.fr       */
+/*   Created: 2024/11/11 12:16:22 by tiizuka           #+#    #+#             */
+/*   Updated: 2024/11/17 09:07:43 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"so_long.h"
+#include    "../header/so_long.h"
 
-int	so_long_timer(t_vars *vars)
+void	set_w(t_texture *tex, int direction, char type)
 {
-	vars->frame++;
-	if ((vars->frame % FPS) == 0)
+	tex->check = True;
+	tex->type = 'W';
+	tex->frame = 0;
+	tex->direction = direction;
+	if (type == 'P')
 	{
-		ft_print_utime("update 1\n");
-		so_long_layer_update(vars);
+		tex->animation = False;
+		tex->max_frame = 0;
 	}
-	if ((vars->frame % FPS_1) == 0)
+	else
 	{
-		ft_print_utime("update 2\n");
-		if (BONUS)
-			so_long_layer_update_bonus(vars);
+		tex->animation = is_animation(TYPE_W);
+		tex->max_frame = get_frame_max(TYPE_W);
 	}
-	return (True);
+	tex->update = True;
 }

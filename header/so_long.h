@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/17 13:08:36 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/17 09:18:22 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@
 
 # define PIXEL_W	64
 # define PIXEL_H	64
-# define FPS	10000 
+# define FPS	6000
+# define FPS_1	12000
 // # define FPS	3000
-# define WIZARD_ANIMATION_DELAY 5
+# define WIZARD_ANIMATION_DELAY 1
 
 # define KEY_W 0x77
 # define KEY_D 0x64
@@ -107,6 +108,7 @@ typedef struct s_texture
 	int		max_frame;
 	int		direction;
 	int		repeat;
+	int		check;
 }	t_texture;
 
 typedef struct s_vars {
@@ -187,6 +189,8 @@ void	*get_image_alpha(t_vars *vars, char c);
 void	*get_image_num(t_vars *vars, char c);
 void	*get_image_w(t_vars *vars, int i);
 
+void	set_w(t_texture *txt, int direction, char type);
 void	villan_move(t_vars *vars);
+void	display_score(t_vars *vars, char *str);
 
 #endif
