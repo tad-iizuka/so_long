@@ -97,12 +97,8 @@ void	so_long_layer_update_bonus(t_vars *vars)
 	else if (vars->complete == FINISH_FAIL)
 		display_str(vars, "FAILa");
 	vars->wizard_update++;
-	// if (vars->wizard_update < WIZARD_ANIMATION_DELAY)
-	// 	type_display(vars, 'W');
 	if (vars->wizard_update > WIZARD_ANIMATION_DELAY)
-	{
 		villan_move(vars);
-	}
 	if (vars->wizard_update == WIZARD_ANIMATION_DELAY)
 		update_wizard_delay_timer(vars);
 }

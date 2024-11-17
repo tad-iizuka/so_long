@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 10:38:21 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/17 09:22:35 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/17 10:08:09 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@ int	so_long_key_hook(int keycode, t_vars *vars)
 		so_long_layer_update(vars);
 		vars->step++;
 		if (!BONUS)
+		{
 			ft_printf("STEP: \x1b[32m[%04d]\x1b[0m\n", vars->step);
+			if (vars->complete == FINISH_SUCCESS)
+				ft_printf("GAME: \x1b[31m[GOAL]\x1b[0m\n");
+		}
 	}
 	return (0);
 }
