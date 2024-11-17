@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/17 09:20:03 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/17 09:43:28 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	villan_move(t_vars *vars)
 	int			i;
 	int			keycode;
 
-	ft_printf("move\n");
 	if (vars->complete != False)
 		return ;
 	i = 0;
