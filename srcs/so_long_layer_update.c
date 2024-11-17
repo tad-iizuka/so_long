@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/17 10:01:14 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/17 11:28:53 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ static void	update_animation(t_vars *vars, char type, int i)
 			if (vars->texture[i].frame == vars->texture[i].max_frame)
 				vars->texture[i].frame = 0;
 			vars->texture[i].update = True;
+			if (vars->complete)
+				vars->texture[i].animation = False;
 		}
 	}
 }
