@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 08:59:29 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/17 12:34:15 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,14 @@
 #  define BONUS 0
 # endif
 
+# define FINISH_SUCCESS 1
+# define FINISH_FAIL 2
+
 # define PIXEL_W	64
 # define PIXEL_H	64
-# define FPS	6000 
+# define FPS	10000 
 // # define FPS	3000
-# define WIZARD_ANIMATION_DELAY 3
-# define WIZARD_UPDATE 3
+# define WIZARD_ANIMATION_DELAY 5
 
 # define KEY_W 0x77
 # define KEY_D 0x64

@@ -100,8 +100,10 @@ void	so_long_layer_update_bonus(t_vars *vars)
 		display_score(vars, p);
 		free(p);
 	}
-	if (vars->complete)
+	if (vars->complete == FINISH_SUCCESS)
 		display_str(vars, "GOALa");
+	else if (vars->complete == FINISH_FAIL)
+		display_str(vars, "FAILa");
 	vars->wizard_update++;
 	if (vars->wizard_update < WIZARD_ANIMATION_DELAY)
 		type_display(vars, 'W');

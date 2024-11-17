@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 10:38:21 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/15 14:44:47 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/17 12:39:55 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	so_long_key_hook(int keycode, t_vars *vars)
 		key_close(vars);
 		return (0);
 	}
-	if (vars->complete)
+	if (vars->complete != False)
 		return (1);
 	if (so_long_key_direction(vars, keycode))
 	{
