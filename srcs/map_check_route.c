@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:55:06 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/18 12:00:09 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/18 14:06:31 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	map_find_pos(t_vars *vars)
 	}
 }
 
-int	map_check_route_sub_find(int x, int y, char *mtx, t_vars *vars)
+static int	map_check_route_sub_find(int x, int y, char *mtx, t_vars *vars)
 {
 	int	r;
 
@@ -51,7 +51,7 @@ int	map_check_route_sub_find(int x, int y, char *mtx, t_vars *vars)
 	return (r);
 }
 
-int	map_check_route_sub(int x, int y, char *mtx, t_vars *vars)
+static int	map_check_route_sub(int x, int y, char *mtx, t_vars *vars)
 {
 	int	r;
 
@@ -71,7 +71,7 @@ int	map_check_route_sub(int x, int y, char *mtx, t_vars *vars)
 	return (r);
 }
 
-void	map_count_for_wizard(t_vars *vars, char *mtx)
+static void	map_count_for_wizard(t_vars *vars, char *mtx)
 {
 	int	i;
 	int	w;

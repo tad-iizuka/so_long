@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:53:39 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/18 12:00:17 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/18 14:10:58 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@ void	map_calc_wizard(t_vars *vars)
 {
 	int	w;
 
-	w = vars->num_space - vars->num_c;
+	w = vars->num_space - vars->num_c - 1;
 	vars->num_space = w;
-	if (w < 10)
+	if (w != 0 && w < 10)
 		vars->num_wizard = 1;
 	else
 		vars->num_wizard = ((w - 10) / 25) + 1;
+	ft_printf("%d\n", vars->num_wizard);
 }
 
 void	map_create_wizard(t_vars *vars)
@@ -34,7 +35,7 @@ void	map_create_wizard(t_vars *vars)
 	i = 0;
 	while (i < vars->num_wizard)
 	{
-		x = ft_random(vars->num_space - 1);
+		x = ft_random(vars->num_space - vars->num_c - 1);
 		m = vars->mtx;
 		z = 0;
 		while (z++ < vars->size_map)
