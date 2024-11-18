@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 10:38:21 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/18 12:02:14 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/18 17:43:24 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	key_close(t_vars *vars)
 
 int	key_hook(int keycode, t_vars *vars)
 {
-	if ((char)keycode == KEY_ESC)
+	if ((char)keycode == KEY_ESC || (char)keycode == KEY_Q)
 	{
 		key_close(vars);
 		return (0);
