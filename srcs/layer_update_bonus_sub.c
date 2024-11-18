@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_layer_update_bonus_sub.c                   :+:      :+:    :+:   */
+/*   layer_update_bonus_sub.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/17 09:43:28 by tiizuka          ###   ########.fr       */
+/*   Created: 2024/11/18 12:01:02 by tiizuka           #+#    #+#             */
+/*   Updated: 2024/11/18 12:10:47 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	key_cont(t_vars *vars, t_texture *to, int dir, int i)
 	return (False);
 }
 
-static void	key_direction(t_vars *vars, int keycode, int i)
+static void	wizard_direction(t_vars *vars, int keycode, int i)
 {
 	if ((char)keycode == KEY_UP)
 		key_cont(vars, &vars->texture[i - vars->w], DIR_W, i);
@@ -50,7 +50,7 @@ static void	key_direction(t_vars *vars, int keycode, int i)
 		key_cont(vars, &vars->texture[i - 1], DIR_A, i);
 }
 
-void	villan_move(t_vars *vars)
+void	wizard_move(t_vars *vars)
 {
 	int			i;
 	int			keycode;
@@ -64,13 +64,13 @@ void	villan_move(t_vars *vars)
 		{
 			keycode = ft_random(4);
 			if (keycode == 0)
-				key_direction(vars, KEY_UP, i);
+				wizard_direction(vars, KEY_UP, i);
 			else if (keycode == 1)
-				key_direction(vars, KEY_DOWN, i);
+				wizard_direction(vars, KEY_DOWN, i);
 			else if (keycode == 2)
-				key_direction(vars, KEY_L, i);
+				wizard_direction(vars, KEY_L, i);
 			else
-				key_direction(vars, KEY_R, i);
+				wizard_direction(vars, KEY_R, i);
 		}
 		i++;
 	}

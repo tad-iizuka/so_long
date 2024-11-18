@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_timer.c                                    :+:      :+:    :+:   */
+/*   loop_hook.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 12:28:47 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/17 09:42:45 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/18 11:59:29 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"so_long.h"
 
-int	so_long_timer(t_vars *vars)
+int	loop_hook(t_vars *vars)
 {
 	vars->frame++;
-	if ((vars->frame % FPS) == 0)
-	{
-		so_long_layer_update(vars);
-	}
-	if ((vars->frame % FPS_1) == 0)
-	{
-		if (BONUS)
-			so_long_layer_update_bonus(vars);
-	}
+	if ((vars->frame % FPS_100) == 0 && !vars->complete)
+		layer_update(vars);
+	if ((vars->frame % FPS_200) == 0 && vars->complete)
+		layer_update(vars);
+	if ((vars->frame % FPS_400) == 0)
+		overlay_message_update(vars);
+	if ((vars->frame % FPS_1000) == 0)
+		layer_update_bonus(vars);
 	return (True);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_map.c                                      :+:      :+:    :+:   */
+/*   map_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 11:55:45 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/14 14:57:33 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/18 13:47:33 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_map	*create_map(char *str, t_vars *vars)
 	return (map);
 }
 
-int	so_long_map_read(int fd, t_vars *vars)
+int	map_main_read(int fd, t_vars *vars)
 {
 	char	*str;
 	int		i;
@@ -61,7 +61,7 @@ int	so_long_map_read(int fd, t_vars *vars)
 	return (vars->map != NULL);
 }
 
-int	so_long_map(char *path, t_vars *vars)
+int	map_main(char *path, t_vars *vars)
 {
 	int		fd;
 	int		r;
@@ -76,9 +76,9 @@ int	so_long_map(char *path, t_vars *vars)
 		perror("so_long");
 		return (False);
 	}
-	r = so_long_map_read(fd, vars);
+	r = map_main_read(fd, vars);
 	close(fd);
-	r &= map_check_main(vars);
+	r &= map_check(vars);
 	if (!r)
 		map_free(vars);
 	return (r);

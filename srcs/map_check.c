@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_map_check.c                                :+:      :+:    :+:   */
+/*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 12:07:47 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 08:26:32 by tiizuka          ###   ########.fr       */
+/*   Created: 2024/11/18 11:54:04 by tiizuka           #+#    #+#             */
+/*   Updated: 2024/11/18 12:00:05 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static int	map_check_format(t_vars *vars)
 	return (True);
 }
 
-int	map_check_main(t_vars *vars)
+int	map_check(t_vars *vars)
 {
 	int	r;
 

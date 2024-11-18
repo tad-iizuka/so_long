@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_layer_update.c                             :+:      :+:    :+:   */
+/*   layer_update.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/17 11:28:53 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/18 12:56:41 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	type_display(t_vars *vars, char type)
 	}
 }
 
-void	so_long_layer_update(t_vars *vars)
+void	layer_update(t_vars *vars)
 {
 	char	*p;
 
@@ -96,9 +96,9 @@ void	so_long_layer_update(t_vars *vars)
 	type_display(vars, 'C');
 	type_display(vars, 'E');
 	type_display(vars, 'P');
-	type_display(vars, 'W');
 	if (BONUS)
 	{
+		type_display(vars, 'W');
 		p = ft_itoa(vars->step);
 		if (p)
 		{

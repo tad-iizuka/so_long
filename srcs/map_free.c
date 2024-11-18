@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_map_free.c                                 :+:      :+:    :+:   */
+/*   map_free.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 11:48:10 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/16 08:31:28 by tiizuka          ###   ########.fr       */
+/*   Created: 2024/11/18 11:55:49 by tiizuka           #+#    #+#             */
+/*   Updated: 2024/11/18 13:17:20 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,12 @@ void	image_free_sub(void **p, int size)
 		if (p[i])
 		{
 			img = p[i];
-			free(img->image);
-			free(img);
+			if (img)
+			{
+				if (img->image)
+					free(img->image);
+				free(img);
+			}
 		}
 		i++;
 	}
@@ -35,8 +39,12 @@ void	image_free_one(void **p)
 	t_img	*img;
 
 	img = p[0];
-	free(img->image);
-	free(img);
+	if (img)
+	{
+		if (img->image)
+			free(img->image);
+		free(img);
+	}
 }
 
 void	image_free(t_vars *vars)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_key_direction.c                            :+:      :+:    :+:   */
+/*   key_direction.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:16:22 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/17 10:07:08 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/18 12:02:16 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	key_cont(t_vars *vars, t_texture *to, int dir)
 	return (False);
 }
 
-int	so_long_key_direction(t_vars *vars, int keycode)
+int	key_direction(t_vars *vars, int keycode)
 {
 	int	r;
 

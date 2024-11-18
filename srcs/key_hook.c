@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_key_hook.c                                 :+:      :+:    :+:   */
+/*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 10:38:21 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/17 10:21:21 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/18 12:02:14 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	key_close(t_vars *vars)
 	return (0);
 }
 
-int	so_long_key_hook(int keycode, t_vars *vars)
+int	key_hook(int keycode, t_vars *vars)
 {
 	if ((char)keycode == KEY_ESC)
 	{
@@ -32,9 +32,9 @@ int	so_long_key_hook(int keycode, t_vars *vars)
 	}
 	if (vars->complete != False)
 		return (1);
-	if (so_long_key_direction(vars, keycode))
+	if (key_direction(vars, keycode))
 	{
-		so_long_layer_update(vars);
+		layer_update(vars);
 		vars->step++;
 		if (!BONUS)
 		{

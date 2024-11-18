@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/17 10:01:43 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/18 13:55:33 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@
 
 # define PIXEL_W	64
 # define PIXEL_H	64
-# define FPS	6000
-# define FPS_1	12000
-// # define FPS	3000
-# define WIZARD_ANIMATION_DELAY 1
+# define FPS_100	6000
+# define FPS_200	12000
+# define FPS_400	24000
+# define FPS_1000	60000
+# define WIZARD_ANIMATION_DELAY 30
 
 # define KEY_W 0x77
 # define KEY_D 0x64
@@ -59,7 +60,7 @@
 # define FRAME_MAX_C 7
 # define FRAME_MAX_P 8
 # define FRAME_MAX 1
-# define FRAME_MAX_W 4
+# define FRAME_MAX_W 8
 
 # define NUM_ALPHA 26
 # define NUM_NUM 10
@@ -144,7 +145,6 @@ typedef struct s_vars {
 	t_texture	*texture;
 	t_img		*type[5];
 	size_t		frame;
-	int			wizard_update;
 }	t_vars;
 
 void	ft_random_init(void);
@@ -153,24 +153,19 @@ void	ft_print_utime(char *id);
 
 void	print_error(char *str);
 
-void	so_long_key_init(t_vars *vars);
-int		so_long_timer(t_vars *vars);
-int		so_long_map(char *path, t_vars *vars);
-void	so_long_layer_init(t_vars *vars);
-void	so_long_layer_update(t_vars *vars);
-void	so_long_layer_update_bonus(t_vars *vars);
-int		so_long_key_hook(int keycode, t_vars *vars);
-int		so_long_key_direction(t_vars *vars, int keycode);
+int		loop_hook(t_vars *vars);
+int		map_main(char *path, t_vars *vars);
+void	layer_init(t_vars *vars);
+void	layer_update(t_vars *vars);
+void	layer_update_bonus(t_vars *vars);
+int		key_hook(int keycode, t_vars *vars);
+int		key_direction(t_vars *vars, int keycode);
 int		key_close(t_vars *vars);
-int		key_up(t_vars *vars);
-int		key_down(t_vars *vars);
-int		key_left(t_vars *vars);
-int		key_right(t_vars *vars);
 
 t_map	*map_new(char *str);
 int		map_to_mtx(t_vars *vars);
 void	map_free(t_vars *vars);
-int		map_check_main(t_vars *vars);
+int		map_check(t_vars *vars);
 int		map_check_route(t_vars *vars);
 void	map_find_pos(t_vars *vars);
 void	map_calc_wizard(t_vars *vars);
@@ -183,6 +178,7 @@ void	type_display(t_vars *vars, char type);
 
 void	set_p(t_texture *txt, int direction, char type);
 void	set_0(t_texture *txt);
+void	init_images(t_vars *vars);
 void	create_images_alnum(t_vars *vars, char *name, char *path, int num);
 void	create_image_one(t_vars *vars, void **img, char *path, int i);
 void	*get_image_alpha(t_vars *vars, char c);
@@ -190,7 +186,9 @@ void	*get_image_num(t_vars *vars, char c);
 void	*get_image_w(t_vars *vars, int i);
 
 void	set_w(t_texture *txt, int direction, char type);
-void	villan_move(t_vars *vars);
+void	wizard_move(t_vars *vars);
 void	display_score(t_vars *vars, char *str);
+void	display_str(t_vars *vars, char *str);
+void	overlay_message_update(t_vars *vars);
 
 #endif

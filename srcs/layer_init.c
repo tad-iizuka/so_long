@@ -1,16 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_layer_init.c                               :+:      :+:    :+:   */
+/*   layer_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:02:11 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/17 09:05:01 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/18 13:55:21 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include    "../header/so_long.h"
+
+static void	init_image(void **p, int size)
+{
+	int		i;
+
+	i = 0;
+	while (i < size)
+		p[i++] = NULL;
+}
+
+void	init_images(t_vars *vars)
+{
+	init_image(vars->img0, FRAME_MAX);
+	init_image(vars->img1, FRAME_MAX);
+	init_image(vars->img_e, FRAME_MAX);
+	init_image(vars->img_c, FRAME_MAX_C);
+	init_image(vars->img_pw, FRAME_MAX_P);
+	init_image(vars->img_ps, FRAME_MAX_P);
+	init_image(vars->img_pa, FRAME_MAX_P);
+	init_image(vars->img_pd, FRAME_MAX_P);
+	if (BONUS)
+	{
+		init_image(vars->img_alpha, NUM_ALPHA);
+		init_image(vars->img_num, NUM_NUM);
+		init_image(vars->img_sym, NUM_SYM);
+		init_image(vars->img_ww, FRAME_MAX_W);
+		init_image(vars->img_ws, FRAME_MAX_W);
+		init_image(vars->img_wa, FRAME_MAX_W);
+		init_image(vars->img_wd, FRAME_MAX_W);
+	}
+}
 
 static int	create_image(t_vars *vars, void **img, char *path, char type)
 {
@@ -51,7 +82,6 @@ static void	create_images(t_vars *vars)
 	create_image(vars, vars->img_pd, "./xpm/P/D/", TYPE_P);
 	if (BONUS)
 	{
-		vars->wizard_update = 0;
 		create_images_alnum(vars, "A.xpm", "./xpm/ALPHA/", NUM_ALPHA);
 		create_images_alnum(vars, "0.xpm", "./xpm/NUM/", NUM_NUM);
 		create_images_alnum(vars, "a.xpm", "./xpm/ALPHA/", NUM_SYM);
@@ -62,7 +92,7 @@ static void	create_images(t_vars *vars)
 	}
 }
 
-void	so_long_layer_init(t_vars *vars)
+void	layer_init(t_vars *vars)
 {
 	int			i;
 	t_texture	*texture;
