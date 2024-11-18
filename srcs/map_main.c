@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 11:55:45 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/18 13:47:33 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/18 20:17:37 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	map_main(char *path, t_vars *vars)
 
 	r = True;
 	if (ft_strnstr(path, ".ber", ft_strlen(path)) == NULL)
-		return (False);
+		return (print_error(ERR_FILENAME_INVALID));
 	errno = 0;
 	fd = open(path, O_RDONLY);
 	if (errno)
@@ -78,6 +78,8 @@ int	map_main(char *path, t_vars *vars)
 	}
 	r = map_main_read(fd, vars);
 	close(fd);
+	if (!r)
+		return (print_error(ERR_FILE_INVALID));
 	r &= map_check(vars);
 	if (!r)
 		map_free(vars);

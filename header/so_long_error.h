@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_error.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tiizuka <tiizuka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 20:19:56 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/18 15:22:36 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/18 20:15:45 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_ERROR_H
 # define  SO_LONG_ERROR_H
+
+# define ERR_FILENAME_INVALID "File: Name is invalid (*.ber).\n"
+# define ERR_FILE_INVALID "File: Format is invalid.\n"
 
 # define ERR_COLLECTIBLE "Map: Not contain at least one 'C'\n"
 # define ERR_EXIT "Map: Not contain/more than 1 'E'\n"
