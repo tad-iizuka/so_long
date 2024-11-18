@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:54:04 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/18 14:42:02 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/18 15:25:53 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,12 @@ static int	map_check_items(t_vars *vars)
 		c += vars->map[i]->num_c;
 		i++;
 	}
-	if (e != 1 || p != 1 || c == 0)
-		return (False);
+	if (e != 1)
+		return (print_error(ERR_EXIT));
+	if (p != 1)
+		return (print_error(ERR_PLAYER));
+	if (c == 0)
+		return (print_error(ERR_COLLECTIBLE));
 	vars->num_c = c;
 	return (True);
 }
@@ -102,17 +106,17 @@ static int	map_check_format(t_vars *vars)
 int	map_check(t_vars *vars)
 {
 	if (!map_check_wall(vars))
-		return (False);
+		return (print_error(ERR_INVALID_WALL));
 	if (!map_check_square(vars))
-		return (False);
+		return (print_error(ERR_NOT_RECTANGLE));
 	if (!map_check_items(vars))
 		return (False);
-	if (map_check_format(vars))
-		return (False);
+	if (!map_check_format(vars))
+		return (print_error(ERR_INVALID_CHAR));
 	map_find_pos(vars);
 	map_to_mtx(vars);
 	if (!map_check_route(vars))
-		return (False);
+		return (print_error(ERR_INVALID_PATH));
 	if (BONUS)
 	{
 		map_calc_wizard(vars);

@@ -6,14 +6,15 @@
 /*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 20:18:34 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/18 11:59:34 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/18 15:16:10 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"so_long.h"
 
-void	print_error(char *str)
+int	print_error(char *str)
 {
 	if (str)
-		perror(str);
+		ft_putstr_fd(str, STDERR_FILENO);
+	return (False);
 }

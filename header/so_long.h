@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:39:24 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/18 13:55:33 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/18 15:15:43 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ void	ft_random_init(void);
 int		ft_random(int range);
 void	ft_print_utime(char *id);
 
-void	print_error(char *str);
+int		print_error(char *str);
 
 int		loop_hook(t_vars *vars);
 int		map_main(char *path, t_vars *vars);
