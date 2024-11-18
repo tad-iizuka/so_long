@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:53:39 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/18 14:10:58 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/18 14:14:31 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	map_calc_wizard(t_vars *vars)
 		vars->num_wizard = 1;
 	else
 		vars->num_wizard = ((w - 10) / 25) + 1;
-	ft_printf("%d\n", vars->num_wizard);
 }
 
 void	map_create_wizard(t_vars *vars)
