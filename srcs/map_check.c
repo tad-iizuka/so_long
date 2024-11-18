@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:54:04 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/18 12:00:05 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/18 14:42:02 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,23 +101,22 @@ static int	map_check_format(t_vars *vars)
 
 int	map_check(t_vars *vars)
 {
-	int	r;
-
-	r = True;
-	r &= map_check_wall(vars);
-	r &= map_check_square(vars);
-	r &= map_check_items(vars);
-	r &= map_check_format(vars);
-	if (r)
+	if (!map_check_wall(vars))
+		return (False);
+	if (!map_check_square(vars))
+		return (False);
+	if (!map_check_items(vars))
+		return (False);
+	if (map_check_format(vars))
+		return (False);
+	map_find_pos(vars);
+	map_to_mtx(vars);
+	if (!map_check_route(vars))
+		return (False);
+	if (BONUS)
 	{
-		map_find_pos(vars);
-		map_to_mtx(vars);
-		r &= map_check_route(vars);
-		if (BONUS && r)
-		{
-			map_calc_wizard(vars);
-			map_create_wizard(vars);
-		}
+		map_calc_wizard(vars);
+		map_create_wizard(vars);
 	}
-	return (r);
+	return (True);
 }
