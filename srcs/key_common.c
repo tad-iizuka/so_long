@@ -6,7 +6,7 @@
 /*   By: tiizuka <tiizuka@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:16:22 by tiizuka           #+#    #+#             */
-/*   Updated: 2024/11/18 11:58:11 by tiizuka          ###   ########.fr       */
+/*   Updated: 2024/11/22 15:34:43 by tiizuka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	set_p(t_texture *txt, int direction, char type)
 		txt->type = 'P';
 	txt->direction = direction;
 	txt->frame = 0;
-	if (type == 'E' || type == 'W')
+	if (type == 'E')
 	{
 		txt->animation = False;
 		txt->max_frame = 0;
